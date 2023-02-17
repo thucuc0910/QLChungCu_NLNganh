@@ -78,11 +78,11 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label>Quận/Huyện</label>
-                <select class="form-control provine choose" name="provine" id="provine">
+                <select class="form-control district choose" name="district" id="district">
                     <option value="">----------------------------------------Chọn Quận/Huyện--------------------------------------------------------</option>
-                    @foreach($provines as $provine)
-                    <option value="{{ $provine->maqh }}" {{ $provine->maqh == $staff->provine ? 'selected' : '' }}>
-                                {{ $provine->name }}</option>
+                    @foreach($districts as $district)
+                    <option value="{{ $district->maqh }}" {{ $district->maqh == $staff->district ? 'selected' : '' }}>
+                                {{ $district->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -91,8 +91,6 @@
             <div class="form-group">
                 <label>Xã/Phường</label>
                 <select class="form-control ward" name="ward" id="ward">
-                    <option value="">----------------------------------------Chọn Xã/Phường--------------------------------------------------------</option>
-                    
                     @foreach($wards as $ward)
                     <option value="{{ $ward->xaid }}" {{ $ward->xaid == $staff->ward ? 'selected' : '' }}>
                                 {{ $ward->name }}</option>
@@ -139,7 +137,7 @@
                 // alert(matp);
                 // alert(_token);
                 if(action == 'city'){
-                    result = 'provine';
+                    result = 'district';
                 }else{
                     result = 'ward';
                 }

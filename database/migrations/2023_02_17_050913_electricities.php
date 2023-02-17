@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
-            $table->integer('matp');
-            $table->string('name');
-            $table->string('type');
-            $table->primary(['matp']);
-            
+        Schema::create('electricities', function (Blueprint $table) {
+            $table->bigInteger('month_electric_id')->unsigned();
+            $table->bigInteger('apartment_id')->unsigned();
+            $table->integer('old');
+            $table->integer('new');
+            $table->integer('total');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('electricities');
     }
 };

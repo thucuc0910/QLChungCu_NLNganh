@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('CMND');
             $table->integer('gender');
             $table->date('birthday');
             $table->string('position');
             $table->Integer('city')->signed();
-            $table->integer('provine');
+            $table->integer('district');
             $table->integer('ward');
             $table->timestamps();
 

@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Provine extends Model
+class Month_electricity extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
     protected $fillable = [
-        'maqh',
-        'name',
-        'type',
-        'matp',
+        'month_id',
+        'year_id',
+        'total',
     ];
 }

@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
-          <label for="user">Họ và tên</label>
+          <label for="user">Tên tài khoản</label>
           <input type="text" name="name" class="form-control" placeholder="Nhập tên chủ tài khoản">
           @error ('name')
           <span style="color: red;">{{ $message }}</span>
@@ -54,10 +54,12 @@
       <div class="col-sm-6">
 
         <div class="form-group">
-          <label>Căn hộ</label>
-          <select class="form-control" name="department_code">
-            @foreach($departments as $department)
-            <option value="{{ $department->id }}">{{ $department->code }}</option>
+          <label>Cư dân</label>
+          <select class="form-control" name="resident_id">
+            <option value="">----------------------------------------Chọn cư dân--------------------------------------------------------</option>
+            <option value="0">Không có căn hộ</option>
+            @foreach($residents as $resident)
+            <option value="{{ $resident->id }}">{{ $resident->name }}</option>
             @endforeach
           </select>
         </div>

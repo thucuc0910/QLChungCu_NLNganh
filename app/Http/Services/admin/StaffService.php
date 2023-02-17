@@ -4,7 +4,7 @@ namespace App\Http\Services\admin;
 
 use App\Models\Staff;
 use App\Models\City;
-use App\Models\Provine;
+use App\Models\District;
 use App\Models\Ward;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -17,7 +17,7 @@ class StaffService
 
     public function get()
     {
-        return Staff::orderByDesc('id')->paginate(15);
+        return Staff::orderBy('id')->paginate(15);
     }
 
     public function getCity()
@@ -25,9 +25,9 @@ class StaffService
         return City::orderBy('matp','ASC')->get();
     }
 
-    public function getProvine()
+    public function getDistrict()
     {
-        return Provine::orderBy('maqh','ASC')->get();
+        return District::orderBy('maqh','ASC')->get();
     }
 
     public function getWard()
@@ -46,9 +46,9 @@ class StaffService
                 'gender' => (integer) $request->input('gender'),
                 'birthday' => $request->input('birthday'),
                 'position' => (string) $request->input('position'),
-                'city' => (string) $request->input('address'),
-                'provine' => (string) $request->input('address'),
-                'ward' => (string) $request->input('address'),
+                'city' => (string) $request->input('city'),
+                'district' => (string) $request->input('district'),
+                'ward' => (string) $request->input('ward'),
 
             ]);
 
@@ -72,7 +72,7 @@ class StaffService
         $staff->birthday = $request->input('birthday');
         $staff->position = (string) $request->input('position');
         $staff->city = (string) $request->input('city');
-        $staff->provine = (string) $request->input('provine');
+        $staff->district = (string) $request->input('district');
         $staff->ward = (string) $request->input('ward');
         $staff->save();
 

@@ -22,9 +22,9 @@
                 <td>{{ $resident->id }}</td>
                 <td>{{ $resident->name }}</td>
                 <td>
-                @foreach ($departments as $key => $department) 
-                    @if ($resident->department_code == $department->id) 
-                    {{$department->code}}
+                @foreach ($apartments as $key => $apartment) 
+                    @if ($resident->apartment_id == $apartment->id) 
+                    {{$apartment->code}}
                     @endif
                 @endforeach
                 </td>

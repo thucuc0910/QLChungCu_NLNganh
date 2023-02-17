@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('department_services', function (Blueprint $table) {
-            $table->bigInteger('department_id')->unsigned();
+        Schema::create('apartment_services', function (Blueprint $table) {
+            $table->bigInteger('apartment_id')->unsigned();
             $table->bigInteger('service_id')->unsigned();
             $table->date('date_start');
             $table->date('date_end');
             $table->timestamps();
 
-            $table->foreign('department_id')
-            ->references('id')->on('departments')
+            $table->foreign('apartment_id')
+            ->references('id')->on('apartments')
             ->onDelete('cascade');
 
             $table->foreign('service_id')

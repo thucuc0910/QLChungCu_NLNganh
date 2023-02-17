@@ -71,13 +71,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/department/add" class="nav-link">
+                            <a href="/admin/apartment/add" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm căn hộ</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/department/list" class="nav-link">
+                            <a href="/admin/apartment/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh sách căn hộ</p>
                             </a>
@@ -133,7 +133,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/admin/service/add_DepartmentService" class="nav-link">
+                            <a href="/admin/service/add_ApartmentService" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm dịch vụ cho căn hộ</p>
                             </a>
@@ -169,6 +169,22 @@
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/electric_water/electric" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Quản lý điện</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/electric_water/water" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Quản lý nước</p>
+                            </a>
+                        </li>
+                    </ul>
+                    
                 </li>
 
             </ul>

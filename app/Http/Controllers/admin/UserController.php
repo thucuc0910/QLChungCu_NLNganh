@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\admin\UserService;
-use App\Http\Services\admin\DepartmentService;
+use App\Http\Services\admin\ResidentService;
 use App\Http\Requests\admin\UserRequest;
 use App\Models\User;
 
@@ -14,21 +14,21 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Illuminate\Http\Request;
 class UserController extends Controller
 {
-    protected $departmentService;
+    protected $residentService;
     protected $userService;
 
 
-    public function __construct(UserService $userService, DepartmentService $departmentService)
+    public function __construct(UserService $userService, ResidentService $residentService)
     {
         $this->userService = $userService;
-        $this->departmentService = $departmentService;
+        $this->residentService = $residentService;
     }
 
     public function add()
     {
         return view('admin.user.add', [
             'title' => 'THÊM TÀI KHOẢN',
-            'departments' => $this->departmentService->getDepartment()
+            'residents' => $this->residentService->getResident()
             // 'users' => $this->userService->getParent()
         ]);
     }
@@ -52,7 +52,7 @@ class UserController extends Controller
         return view('admin.user.edit', [
             'title' => 'CẬP NHẬT TÀI KHOẢN',
             'user' => $user,
-            'departments' => $this->departmentService->getDepartment()
+            'residents' => $this->residentService->getResident()
         ]);
     }
 

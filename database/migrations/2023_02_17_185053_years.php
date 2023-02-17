@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
-            $table->integer('matp');
+        Schema::create('years', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->string('type');
-            $table->primary(['matp']);
-            
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('years');
     }
 };

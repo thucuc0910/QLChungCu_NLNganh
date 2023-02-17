@@ -30,7 +30,7 @@ class StaffRequest extends FormRequest
             'position' => 'required',
             'gender' => 'required',
             'city' => 'required',
-            'provine' => 'required',
+            'district' => 'required',
             'ward' => 'required',
             'birthday' => 'required|date_format:Y-m-d',
 
@@ -48,7 +48,7 @@ class StaffRequest extends FormRequest
             'position.required' => 'Vui lòng chọn chức vụ',
             'gender.required' => 'Vui lòng chọn giới tính',
             'city.required' => 'Vui lòng chọn thành phố',
-            'provine.required' => 'Vui lòng chọn quận/huyện',
+            'district.required' => 'Vui lòng chọn quận/huyện',
             'ward.required' => 'Vui lòng chọn xã/phường',
             'birthday' => 'Vui lòng chọn ngày sinh',
         ];

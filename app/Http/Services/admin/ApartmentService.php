@@ -2,28 +2,24 @@
 
 namespace App\Http\Services\admin;
 
-use App\Models\Department;
+use App\Models\Apartment;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Hash;
 
-class DepartmentService
+class ApartmentService
 {
 
     public function get(){
-
-        // dd(123);
-        // $a=Department::orderByDesc('id');
-        // dd($a);
-        return Department::orderBy('id')->paginate(15);
+        return Apartment::orderBy('id')->paginate(15);
     }
 
     public function create($request)
     {
         // $pass=Hash::make($request->password);
         try {
-            Department::create([
+            Apartment::create([
                 'code' => (string) $request->input('code'),
                 'floor' => (integer) $request->input('floor'),
                 'length' => (double) $request->input('length'),
@@ -44,17 +40,17 @@ class DepartmentService
          return true;
     }
 
-    public function update($request, $department): bool
+    public function update($request, $apartment): bool
     {
-        // dd($department->email);
-        $department->code = (string)$request->input('code');
-        $department->floor = (integer)$request->input('floor');
-        $department->length = (double)$request->input('length');
-        $department->width= (double)$request->input('width');
-        $department->description = (string)$request->input('description');
-        $department->status = (integer)$request->input('status');
-        $department->direction = (string)$request->input('directrion');
-        $department->save();
+        // dd($apartment->email);
+        $apartment->code = (string)$request->input('code');
+        $apartment->floor = (integer)$request->input('floor');
+        $apartment->length = (double)$request->input('length');
+        $apartment->width= (double)$request->input('width');
+        $apartment->description = (string)$request->input('description');
+        $apartment->status = (integer)$request->input('status');
+        $apartment->direction = (string)$request->input('direction');
+        $apartment->save();
 
         Session::flash('success', 'Cập nhật thành công căn hộ');
         return true;
@@ -62,18 +58,18 @@ class DepartmentService
 
     public function delete($request)
     {
-        $department = Department::where('id', $request->input('id'))->first();
-        if ($department) {
-            $department->delete();
+        $apartment = Apartment::where('id', $request->input('id'))->first();
+        if ($apartment) {
+            $apartment->delete();
             return true;
         }
 
         return false;
     }
 
-    public function getDepartment()
+    public function getApartment()
     {
-        return Department::where('status' , '>=', 0)->get();
+        return Apartment::where('status' , '>=', 0)->get();
     }
 
     

@@ -14,7 +14,7 @@ class ServiceService
 
     public function get()
     {
-        return Service::orderByDesc('id')->paginate(15);
+        return Service::orderBy('id')->paginate(15);
     }
 
     public function create($request)

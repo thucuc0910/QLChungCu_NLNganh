@@ -11,7 +11,7 @@ use App\Http\Services\admin\StaffService;
 use App\Http\Requests\admin\StaffRequest;
 use App\Models\Staff;
 use App\Models\City;
-use App\Models\Provine;
+use App\Models\District;
 use App\Models\Ward;
 
 
@@ -31,7 +31,7 @@ class StaffController extends Controller
 
         return view('admin.staff.add', [
             'title' => 'THÊM NHÂN VIÊN',
-            // 'provines' => $this->StaffService->getProvine(),
+            // 'districts' => $this->StaffService->getProvine(),
             // 'wards' => $this->StaffService->getWard(),
 
         ])->with(compact('city'));
@@ -61,10 +61,10 @@ class StaffController extends Controller
         if ($data['action']) {
             $output = '';
             if ($data['action'] == "city") {
-                $add_provine = Provine::where('matp', $data['ma_id'])->orderBy('maqh','ASC')->get();
+                $add_district = District::where('matp', $data['ma_id'])->orderBy('maqh','ASC')->get();
                 $output .= '<option>----------Chọn quận huyện--------</option>';
-                foreach ($add_provine as $key => $provine) {
-                    $output .= '<option value="'. $provine->maqh .'">'. $provine->name .'</option>';
+                foreach ($add_district as $key => $district) {
+                    $output .= '<option value="'. $district->maqh .'">'. $district->name .'</option>';
                 }
             } else {
                 $add_ward = Ward::where('maqh', $data['ma_id'])->orderBy('xaid', 'ASC')->get();
@@ -101,10 +101,8 @@ class StaffController extends Controller
             'title' => 'CẬP NHẬT NHÂN VIÊN',
             'staff' => $staff,
             'cities' => $this->StaffService->getCity(),
-            'provines' => $this->StaffService->getProvine(),
+            'districts' => $this->StaffService->getDistrict(),
             'wards' => $this->StaffService->getWard(),
-
-
         ]);
     }
 

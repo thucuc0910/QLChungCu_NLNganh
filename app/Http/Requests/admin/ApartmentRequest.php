@@ -4,7 +4,7 @@ namespace App\Http\Requests\admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DepartmentRequest extends FormRequest
+class ApartmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

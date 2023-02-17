@@ -12,16 +12,17 @@ class UserService{
 
 
     public function get(){
-        return User::orderByDesc('id')->paginate(15);
+        return User::orderBy('id')->paginate(15);
     }
 
     public function create($request)
     {
-        $pass=Hash::make($request->password);
+        $pass=Hash::make($request->resident_id);
         try {
             User::create([
                 'name' => (string) $request->input('name'),
                 'phone' => (string) $request->input('phone'),
+                'resident_id' => (integer) $request->input('resident_id'),
                 'email' => (string) $request->input('email'),
                 'password' => (string) $pass,
                 'type' => (string) $request->input('type'),
@@ -46,7 +47,7 @@ class UserService{
         $user->phone = (string)$request->input('phone');
         $user->email = (string)$request->input('email');
         $user->type = (string)$request->input('type');
-        // $user->password = (string)$request->input('password');
+        $user->resident_id = (integer)$request->input('resident_id');
         // $user->status = (integer)$request->input('status');
         $user->save();
 

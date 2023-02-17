@@ -24,7 +24,7 @@ class ResidentRequest extends FormRequest
     public function rules()
     {
         return [
-            'department_code' => 'required',
+            'apartment_id' => 'required',
             'name' => 'required',
             'phone' => 'required|min:10|max:10',
             'CMND' => 'required',
@@ -38,7 +38,7 @@ class ResidentRequest extends FormRequest
     public function messages() : array
     {
         return [
-            'department' => 'Vui lòng chọn căn hộ',
+            'apartment_id' => 'Vui lòng chọn căn hộ',
             'name.required' => 'Vui lòng nhập họ và tên',
             'phone.required' => 'Vui lòng nhập số điện thoại',
             'phone.min' => 'Số điện thoại phải đúng 10 số',

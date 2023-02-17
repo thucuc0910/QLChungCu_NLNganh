@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 
 use App\Http\Services\admin\ResidentService;
-use App\Http\Services\admin\DepartmentService;
+use App\Http\Services\admin\ApartmentService;
 use App\Http\Requests\admin\ResidentRequest;
 use App\Models\Resident;
 
@@ -17,20 +17,20 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ResidentController extends Controller
 {
     protected $residentService;
-    protected $departmentService;
+    protected $apartmentService;
 
 
-    public function __construct(ResidentService $residentService, DepartmentService $departmentService)
+    public function __construct(ResidentService $residentService, ApartmentService $apartmentService)
     {
         $this->residentService = $residentService;
-        $this->departmentService = $departmentService;
+        $this->apartmentService = $apartmentService;
     }
 
     public function add()
     {
         return view('admin.resident.add', [
             'title' => 'THÊM CƯ DÂN',
-            'departments' => $this->residentService->getDepartment()
+            'apartments' => $this->apartmentService->getApartment()
             // 'residents' => $this->residentService->getParent()
         ]);
     }
@@ -45,7 +45,7 @@ class ResidentController extends Controller
         return view('admin.resident.list',[
             'title' => "DANH SÁCH CƯ DÂN",
             'residents' => $this->residentService->get(),
-            'departments' =>    $this->departmentService->get(),
+            'apartments' =>    $this->apartmentService->get(),
         ]);
     }
 
@@ -54,7 +54,7 @@ class ResidentController extends Controller
         return view('admin.resident.edit', [
             'title' => 'CẬP NHẬT CƯ DÂN',
             'resident' => $resident,
-            'departments' => $this->residentService->getDepartment()
+            'apartments' => $this->apartmentService->getApartment()
         ]);
     }
 

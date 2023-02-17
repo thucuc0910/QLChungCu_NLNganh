@@ -4,69 +4,69 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Services\admin\DepartmentService;
+use App\Http\Services\admin\ApartmentService;
 use App\Http\Services\admin\ServiceService;
-use App\Http\Requests\admin\DepartmentRequest;
-use App\Models\Department;
+use App\Http\Requests\admin\ApartmentRequest;
+use App\Models\Apartment;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+class ApartmentController extends Controller
 {
-    protected $departmentService;
+    protected $apartmentService;
     protected $serviceService;
 
-    public function __construct(DepartmentService $departmentService, ServiceService $serviceService)
+    public function __construct(ApartmentService $apartmentService, ServiceService $serviceService)
     {
-        $this->departmentService = $departmentService;
+        $this->apartmentService = $apartmentService;
         $this->serviceService = $serviceService;
     }
 
     public function add()
     {
-        return view('admin.department.add', [
+        return view('admin.apartment.add', [
             'title' => 'THÊM CĂN HỘ',
             // 'users' => $this->userService->getParent()
         ]);
     }
 
-    public function create(DepartmentRequest $request)
+    public function create(ApartmentRequest $request)
     {
         //dd($request->input());
-        $this->departmentService->create($request);
+        $this->apartmentService->create($request);
 
         return redirect()->back();
     }
 
     public function list()
     {
-        return view('admin.department.list',[
+        return view('admin.apartment.list',[
             'title' => "DANH SÁCH CĂN HỘ",
-            'departments' => $this->departmentService->get(),
+            'apartments' => $this->apartmentService->get(),
         ]);
     }
 
-    public function edit(Department $department)
+    public function edit(Apartment $apartment)
     {
-        return view('admin.department.edit', [
+        return view('admin.apartment.edit', [
             'title' => 'CẬP NHẬT CĂN HỘ',
-            'department' => $department,
+            'apartment' => $apartment,
         ]);
     }
 
-    public function update(Department $department, DepartmentRequest $request )
+    public function update(Apartment $apartment, ApartmentRequest $request )
     {
-        $this->departmentService->update($request, $department);
+        $this->apartmentService->update($request, $apartment);
 
-        return redirect('/admin/department/list');
+        return redirect('/admin/apartment/list');
     }
 
     public function destroy(Request $request): JsonResponse
     {
-        $result = $this->departmentService->delete($request);
+        $result = $this->apartmentService->delete($request);
         if($result){
             return response()->json([
                 'error' => false,

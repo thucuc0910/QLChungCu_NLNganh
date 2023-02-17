@@ -12,15 +12,15 @@ use App\Models\Department;
 class ResidentService{
 
     public function get(){
-        return Resident::orderByDesc('id')->paginate(15);
+        return Resident::orderBy('id')->paginate(15);
     }
 
     public function create($request)
     {
         try {
             Resident::create([
-                'department_code' => (string) $request->input('department_code'),
                 'name' => (string) $request->input('name'),
+                'apartment_id' => (integer) $request->input('apartment_id'),
                 'phone' => (string) $request->input('phone'),
                 'CMND' => (string) $request->input('CMND'),
                 'gender' => (integer) $request->input('gender'),
@@ -42,8 +42,8 @@ class ResidentService{
 
     public function update($request, $resident): bool
     {
-        $resident -> department_code = (string) $request->input('department_code');
         $resident -> name = (string) $request->input('name');
+        $resident -> apartment_id = (integer) $request->input('apartment_id');
         $resident -> phone = (string) $request->input('phone');
         $resident -> CMND = (string) $request->input('CMND');
         $resident -> gender = (integer) $request->input('gender');
@@ -67,9 +67,9 @@ class ResidentService{
         return false;
     }
 
-    public function getDepartment()
+    public function getResident()
     {
-        return Department::where('status' , '>=', 0)->get();
+        return Resident::where('apartment_id' , '!=', NULL)->get();
     }
 
 }

@@ -77,7 +77,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label>Quận/Huyện</label>
-                <select class="form-control provine choose" name="provine" id="provine">
+                <select class="form-control district choose" name="district" id="district">
                     <option value="">----------------------------------------Chọn Quận/Huyện--------------------------------------------------------</option>
  -->
                 </select>
@@ -128,7 +128,7 @@
                 var birthday = $('.birthday').val();
                 var gender = $('.gender').val();
                 var city = $('.city').val();
-                var provine = $('.provine').val();
+                var district = $('.district').val();
                 var ward = $('.ward').val();
                 var _token = $('input[name="_token"]').val();
 
@@ -139,7 +139,7 @@
                 // alert(birthday);
                 // alert(gender);
                 // alert(city);
-                // alert(provine);
+                // alert(district);
                 // alert(ward);
                 $.ajax({
                     url : "{{url('admin/staff/add_staff')}}",
@@ -152,7 +152,7 @@
                         birthday:birthday,
                         gender:gender,
                         city:city,
-                        provine:provine,
+                        district:district,
                         ward:ward,
                         _token:_token},
                     success:function(data){
@@ -172,7 +172,7 @@
                 // alert(matp);
                 // alert(_token);
                 if(action == 'city'){
-                    result = 'provine';
+                    result = 'district';
                 }else{
                     result = 'ward';
                 }

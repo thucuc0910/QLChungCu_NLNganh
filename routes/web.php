@@ -5,12 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\DepartmentController;
-use App\Http\Controllers\admin\DepartmentServiceController;
+use App\Http\Controllers\admin\ApartmentController;
+use App\Http\Controllers\admin\ApartmentServiceController;
 use App\Http\Controllers\admin\StaffController;
 use App\Http\Controllers\admin\ResidentController;
 
 use App\Http\Controllers\admin\ServiceController;
+use App\Http\Controllers\admin\ElectricityController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -32,13 +34,13 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/edit/{user}', [UserController::class, 'update']);
             Route::delete('/destroy', [UserController::class, 'destroy']);
         });
-        Route::prefix('department')->group(function () {
-            Route::get('/list', [DepartmentController::class, 'list']);
-            Route::get('/add', [DepartmentController::class, 'add']);
-            Route::post('/add', [DepartmentController::class, 'create']);
-            Route::get('/edit/{department}', [DepartmentController::class, 'edit']);
-            Route::post('/edit/{department}', [DepartmentController::class, 'update']);
-            Route::delete('/destroy', [DepartmentController::class, 'destroy']);
+        Route::prefix('apartment')->group(function () {
+            Route::get('/list', [ApartmentController::class, 'list']);
+            Route::get('/add', [ApartmentController::class, 'add']);
+            Route::post('/add', [ApartmentController::class, 'create']);
+            Route::get('/edit/{apartment}', [ApartmentController::class, 'edit']);
+            Route::post('/edit/{apartment}', [ApartmentController::class, 'update']);
+            Route::delete('/destroy', [ApartmentController::class, 'destroy']);
             
         });
         Route::prefix('staff')->group(function () {
@@ -59,8 +61,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/edit/{service}', [ServiceController::class, 'update']);
             Route::delete('/destroy', [ServiceController::class, 'destroy']);
 
-            Route::get('/add_DepartmentService', [DepartmentServiceController::class, 'add_service']);
-            Route::post('/add_DepartmentService', [DepartmentServiceController::class, 'add_service_update']);
+            Route::get('/add_ApartmentService', [ApartmentServiceController::class, 'add_service']);
+            Route::post('/add_ApartmentService', [ApartmentServiceController::class, 'add_service_update']);
         });
         Route::prefix('resident')->group(function () {
             Route::get('/list', [ResidentController::class, 'list']);
@@ -69,6 +71,19 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{resident}', [ResidentController::class, 'edit']);
             Route::post('/edit/{resident}', [ResidentController::class, 'update']);
             Route::delete('/destroy', [ResidentController::class, 'destroy']);
+        });
+
+        Route::prefix('electric_water')->group(function () {
+            Route::get('/electric', [ElectricityController::class, 'month_electric']);
+            Route::get('/list/{month}', [ElectricityController::class, 'list_electricity']);
+
+            // Route::get('/list', [ElectricityController::class, 'list_electric']);
+            // Route::post('/list', [ElectricityController::class, 'create']);
+            // Route::get('/add', [ElectricityController::class, 'add']);
+            // Route::post('/add', [ElectricityController::class, 'create']);
+            // Route::get('/edit/{electricity}', [ElectricityController::class, 'edit']);
+            // Route::post('/edit/{electricity}', [ElectricityController::class, 'update']);
+            // Route::delete('/destroy', [ElectricityController::class, 'destroy']);
         });
     });
 

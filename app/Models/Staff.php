@@ -21,7 +21,7 @@ class Staff extends Model
         'birthday',
         'position',
         'city',
-        'provine',	
+        'district',	
         'ward',	
     ];
 }

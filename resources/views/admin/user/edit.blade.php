@@ -43,11 +43,13 @@
             <div class="col-sm-6">
 
                 <div class="form-group">
-                    <label>Danh Mục</label>
-                    <select class="form-control" name="department_code">
-                        @foreach($departments as $department)
-                        <option value="{{ $department->id }}" {{ $department->department_code == $department->id ? 'selected' : '' }}>
-                            {{ $department->code }}
+                    <label>Cư dân</label>
+                    <select class="form-control" name="resident_id">
+                        <option value="0">Không có căn hộ</option>
+
+                        @foreach($residents as $resident)
+                        <option value="{{ $resident->id }}" {{ $user->resident_id == $resident->id ? 'selected' : '' }}>
+                            {{ $resident->name }}
                         </option>
                         @endforeach
                     </select>

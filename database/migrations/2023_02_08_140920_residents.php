@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('department_code')->unsigned();
+            $table->bigInteger('apartment_id')->unsigned();
             $table->string('name');
+            $table->string('phone');
             $table->string('CMND');
             $table->integer('gender');
             $table->date('birthday');
@@ -24,8 +25,8 @@ return new class extends Migration
             $table->string('status');
             $table->timestamps();
 
-            $table->foreign('department_code')
-                ->references('id')->on('departments')
+            $table->foreign('apartment_id')
+                ->references('id')->on('apartments')
                 ->onDelete('cascade');
         });
     }

@@ -20,10 +20,10 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Căn hộ</label>
-                    <select class="form-control" name="department_code">
+                    <select class="form-control" name="apartment_id">
                         <option value="">----------------------------------------Chọn căn hộ--------------------------------------------------------</option>
-                        @foreach($departments as $department)
-                        <option value="{{ $department->id }}">{{ $department->code }}</option>
+                        @foreach($apartments as $apartment)
+                        <option value="{{ $apartment->id }}">{{ $apartment->code }}</option>
                         @endforeach
                     </select>
                 </div>

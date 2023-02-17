@@ -2,14 +2,14 @@
 
 namespace App\Http\Services\admin;
 
-use App\Models\DepartmentService;
+use App\Models\ApartmentService;
 use Brick\Math\BigInteger;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Hash;
 
-class DepartmentServiceService
+class ApartmentServiceService
 {
 
     public function createDepartmentService($request)
@@ -18,7 +18,7 @@ class DepartmentServiceService
         // dd($request->input('service_id'));
         // $pass=Hash::make($request->password);
         try {
-            DepartmentService::create([
+            ApartmentService::create([
                 'department_id' => (integer)$request->input('department_id'),
                 'service_id' => (Integer)$request->input('service_id'),
                 'date_start' => $request->input('date_start'),
