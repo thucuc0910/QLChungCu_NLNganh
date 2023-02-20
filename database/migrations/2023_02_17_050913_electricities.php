@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('electricities', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('month_electric_id')->unsigned();
             $table->bigInteger('apartment_id')->unsigned();
             $table->integer('old');
             $table->integer('new');
-            $table->integer('total');
         });
     }
 

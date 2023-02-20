@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+<div class="card-header ">
+    <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
+</div>
 <form action="" method="POST">
     <div class="card-body">
         <div class="row">
@@ -70,7 +73,8 @@
                     <option value="">----------------------------------------Chọn tỉnh thành phố--------------------------------------------------------</option>
                     @foreach($cities as $ci)
                     <option value="{{ $ci->matp }}" {{ $ci->matp == $staff->city ? 'selected' : '' }}>
-                                {{ $ci->name }}</option>
+                        {{ $ci->name }}
+                    </option>
                     @endforeach
                 </select>
             </div>
@@ -82,7 +86,8 @@
                     <option value="">----------------------------------------Chọn Quận/Huyện--------------------------------------------------------</option>
                     @foreach($districts as $district)
                     <option value="{{ $district->maqh }}" {{ $district->maqh == $staff->district ? 'selected' : '' }}>
-                                {{ $district->name }}</option>
+                        {{ $district->name }}
+                    </option>
                     @endforeach
                 </select>
             </div>
@@ -93,9 +98,10 @@
                 <select class="form-control ward" name="ward" id="ward">
                     @foreach($wards as $ward)
                     <option value="{{ $ward->xaid }}" {{ $ward->xaid == $staff->ward ? 'selected' : '' }}>
-                                {{ $ward->name }}</option>
+                        {{ $ward->name }}
+                    </option>
                     @endforeach
-                    
+
                 </select>
             </div>
         </div>
@@ -127,30 +133,34 @@
 
 @section('footer')
 <script type="text/javascript">
-    $(document).ready(function(){
-            $('.choose').on('change',function() {
-                var action =$(this).attr('id');
-                var ma_id = $(this).val();
-                var _token = $('input[name="_token"]').val();
-                var $result = '';
-                // alert(action);
-                // alert(matp);
-                // alert(_token);
-                if(action == 'city'){
-                    result = 'district';
-                }else{
-                    result = 'ward';
-                }
+    $(document).ready(function() {
+        $('.choose').on('change', function() {
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var $result = '';
+            // alert(action);
+            // alert(matp);
+            // alert(_token);
+            if (action == 'city') {
+                result = 'district';
+            } else {
+                result = 'ward';
+            }
 
-                $.ajax({
-                    url : "{{url('admin/staff/select_address')}}",
-                    method: 'Post',
-                    data: {action:action,ma_id:ma_id,_token:_token},
-                    success:function(data){
-                        $('#'+result).html(data);
-                    }
-                });
+            $.ajax({
+                url: "{{url('admin/staff/select_address')}}",
+                method: 'Post',
+                data: {
+                    action: action,
+                    ma_id: ma_id,
+                    _token: _token
+                },
+                success: function(data) {
+                    $('#' + result).html(data);
+                }
             });
         });
+    });
 </script>
 @endsection

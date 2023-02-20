@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+<div class="card-header ">
+    <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
+</div>
 <form action="" method="POST">
     <div class="card-body">
         <div class="row">
@@ -65,9 +68,9 @@
 
             <div class="form-group col-sm-6">
                 <label>Ngày sinh</label>
-                <input type="date" name="birthday" class="form-control" >
+                <input type="date" name="birthday" class="form-control">
                 @error ('birtthday')
-                    <span style="color: red;">{{ $message }}</span>
+                <span style="color: red;">{{ $message }}</span>
                 @enderror
             </div>
         </div>

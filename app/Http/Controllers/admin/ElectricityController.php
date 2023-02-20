@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 use App\Http\Services\admin\ResidentService;
 use App\Http\Services\admin\ApartmentService;
 use App\Http\Services\admin\ElectricityService;
-use App\Http\Requests\admin\ResidentRequest;
-use App\Models\Resident;
+use App\Http\Requests\admin\ElectricityRequest;
 use App\Models\Electricity;
 use App\Models\Month;
+use App\Models\Month_electricity;
 use Illuminate\Cache\NullStore;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Illuminate\Support\Facades\Session;
+
 
 class ElectricityController extends Controller
 {
@@ -43,13 +45,13 @@ class ElectricityController extends Controller
         $id = $month->id;
         $apartments = $this->electricityService->getApartment();
         $electricities = $this->electricityService->getElectricity($id);
-        $a=0;
-        foreach($electricities as $b => $electricity){
-            $a= $a + 1;
-        }
+        $a = 0;
+        $total = 0;
+        foreach ($electricities as $b => $electricity) {
+            $a = $a + 1;
+            $total = $total + $electricity->new;
+        };
 
-
-        // dd($electricities);
         if ($a == 0) {
             foreach ($apartments as $key => $temp) {
                 $data = new Electricity;
@@ -57,79 +59,71 @@ class ElectricityController extends Controller
                 $data->apartment_id = $temp->id;
                 $data->old = 0;
                 $data->new = 0;
-                $data->total = 0;
                 $data->save();
             }
+        } elseif ($a != 0) {
+            $b = Electricity::where('month_electric_id', '=', $id)->first();
+            $c= $b->month_electric_id;
+            $d = $c - 1;
+            if ($id > 0) {
+                $e = Electricity::where('month_electric_id', '=', $d)->get();
+                foreach ($e as $key => $t) {
+                    foreach ($electricities as $key => $electricity) {
+                        if($electricity->apartment_id == $t->apartment_id){
+                            $electricity->old = $t->new;
+                            $electricity->save();
+                        }
+                    };
+                }
+            }
         }
+
         return view('admin.electric_water.list_electric', [
             'title' => 'QUẢN LÝ CHỈ SỐ ĐIỆN',
-            'electricities' => $this->electricityService->get(),
+            'electricities' => $this->electricityService->getElectricity($id),
+            'total' => $total,
             'apartments' => $this->electricityService->getApartment(),
             'months' => $this->electricityService->getMonth(),
         ]);
     }
 
-    // public function create(Request $request)
-    // {
 
-    //     // echo 123;
-    //     $this->electricityService->create($request);
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        // dd($data);
+        // $id = $month->id;
+        $total = 0;
+        $electricities = $this->electricityService->get();
+        if ($electricities == true) {
+            foreach ($data['new'] as $key => $new) {
+                foreach ($electricities as $t => $electricity) {
+                    if ($electricity['id'] == $key) {
 
-    //     return redirect()->back();
-    // }
-    // public function add()
-    // {
-    //     return view('admin.resident.add', [
-    //         'title' => 'THÊM CƯ DÂN',
-    //         'departments' => $this->residentService->getDepartment()
-    //         // 'residents' => $this->residentService->getParent()
-    //     ]);
-    // }
-    // public function create(ResidentRequest $request)
-    // {
-    //     $this->residentService->create($request);
+                        $electricity['new'] = $new;
+                        $electricity->save();
+                    }
+                }
+            }
+            Session::flash('success', 'Cập nhật chỉ số điện thành công.');
+            return redirect()->back();
+        }
+    }
 
-    //     return redirect()->back();
-    // }
-    // public function list()
-    // {
-    //     return view('admin.resident.list',[
-    //         'title' => "DANH SÁCH CƯ DÂN",
-    //         'residents' => $this->residentService->get(),
-    //         'departments' =>    $this->apartmentService->get(),
-    //     ]);
-    // }
+    public function add(Request $request)
+    {
+        $electricitymonths = $this->electricityService->getElectricityMonthLast();
 
-    // public function edit(Resident $resident)
-    // {
-    //     return view('admin.resident.edit', [
-    //         'title' => 'CẬP NHẬT CƯ DÂN',
-    //         'resident' => $resident,
-    //         'departments' => $this->residentService->getDepartment()
-    //     ]);
-    // }
+        $data = new Month_electricity;
+        if ($electricitymonths->month_id < 12) {
+            $data->month_id = $electricitymonths->month_id + 1;
+            $data->year_id = $electricitymonths->year_id;
+        } elseif ($electricitymonths->month_id == 12) {
+            $data->month_id = 12;
+            $data->year_id = $electricitymonths->year_id + 1;
+        }
+        $data->save();
 
-
-
-    // public function update(Resident $resident, ResidentRequest $request )
-    // {
-    //     $this->residentService->update($request, $resident);
-
-    //     return redirect('/admin/resident/list');
-    // }
-
-
-    // public function destroy(Request $request): JsonResponse
-    // {
-    //     $result = $this->residentService->delete($request);
-    //     if($result){
-    //         return response()->json([
-    //             'error' => false,
-    //             'message' => 'Xoá thành công cư dân.'
-    //         ]);
-    //     }
-    //     return response()->json([
-    //         'error' => true  
-    //     ]);
-    // }
+        return redirect()->back();
+    }
 }

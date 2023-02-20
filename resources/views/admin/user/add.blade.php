@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+<div class="card-header ">
+  <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
+</div>
 <form action="" method="POST">
   <div class="card-body">
     <div class="row">

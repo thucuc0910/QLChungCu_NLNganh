@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+<div class="card-header ">
+    <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
+</div>
 <form action="" method="POST">
     <div class="card-body">
         <div class="row">
@@ -79,7 +82,7 @@
                 <label>Quận/Huyện</label>
                 <select class="form-control district choose" name="district" id="district">
                     <option value="">----------------------------------------Chọn Quận/Huyện--------------------------------------------------------</option>
- -->
+                    -->
                 </select>
             </div>
         </div>
@@ -119,73 +122,78 @@
 
 @section('footer')
 <script type="text/javascript">
-    $(document).ready(function(){
-            $('.add_staff').click(function(){
-                var name = $('.name').val();
-                var email = $('.email').val();
-                var CMND = $('.CMND').val();
-                var position = $('.position').val();
-                var birthday = $('.birthday').val();
-                var gender = $('.gender').val();
-                var city = $('.city').val();
-                var district = $('.district').val();
-                var ward = $('.ward').val();
-                var _token = $('input[name="_token"]').val();
+    $(document).ready(function() {
+        $('.add_staff').click(function() {
+            var name = $('.name').val();
+            var email = $('.email').val();
+            var CMND = $('.CMND').val();
+            var position = $('.position').val();
+            var birthday = $('.birthday').val();
+            var gender = $('.gender').val();
+            var city = $('.city').val();
+            var district = $('.district').val();
+            var ward = $('.ward').val();
+            var _token = $('input[name="_token"]').val();
 
-                // alert(name);
-                // alert(email);
-                // alert(CMND);
-                // alert(position);
-                // alert(birthday);
-                // alert(gender);
-                // alert(city);
-                // alert(district);
-                // alert(ward);
-                $.ajax({
-                    url : "{{url('admin/staff/add_staff')}}",
-                    method: 'Post',
-                    data: {
-                        name:name,
-                        email:email,
-                        CMND:CMND,
-                        position:position,
-                        birthday:birthday,
-                        gender:gender,
-                        city:city,
-                        district:district,
-                        ward:ward,
-                        _token:_token},
-                    success:function(data){
-                        alert('Thêm nhân viên thành công.');
-                    }
-                });
-
-                
+            // alert(name);
+            // alert(email);
+            // alert(CMND);
+            // alert(position);
+            // alert(birthday);
+            // alert(gender);
+            // alert(city);
+            // alert(district);
+            // alert(ward);
+            $.ajax({
+                url: "{{url('admin/staff/add_staff')}}",
+                method: 'Post',
+                data: {
+                    name: name,
+                    email: email,
+                    CMND: CMND,
+                    position: position,
+                    birthday: birthday,
+                    gender: gender,
+                    city: city,
+                    district: district,
+                    ward: ward,
+                    _token: _token
+                },
+                success: function(data) {
+                    alert('Thêm nhân viên thành công.');
+                }
             });
 
-            $('.choose').on('change',function() {
-                var action =$(this).attr('id');
-                var ma_id = $(this).val();
-                var _token = $('input[name="_token"]').val();
-                var $result = '';
-                // alert(action);
-                // alert(matp);
-                // alert(_token);
-                if(action == 'city'){
-                    result = 'district';
-                }else{
-                    result = 'ward';
-                }
 
-                $.ajax({
-                    url : "{{url('admin/staff/select_address')}}",
-                    method: 'Post',
-                    data: {action:action,ma_id:ma_id,_token:_token},
-                    success:function(data){
-                        $('#'+result).html(data);
-                    }
-                });
+        });
+
+        $('.choose').on('change', function() {
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var $result = '';
+            // alert(action);
+            // alert(matp);
+            // alert(_token);
+            if (action == 'city') {
+                result = 'district';
+            } else {
+                result = 'ward';
+            }
+
+            $.ajax({
+                url: "{{url('admin/staff/select_address')}}",
+                method: 'Post',
+                data: {
+                    action: action,
+                    ma_id: ma_id,
+                    _token: _token
+                },
+                success: function(data) {
+                    $('#' + result).html(data);
+                }
             });
         });
+    });
 </script>
 @endsection

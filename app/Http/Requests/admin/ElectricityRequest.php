@@ -4,7 +4,7 @@ namespace App\Http\Requests\admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ElectricityController extends FormRequest
+class ElectricityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,14 @@ class ElectricityController extends FormRequest
     public function rules()
     {
         return [
-            //
+            'new' => 'required',
+        ];
+    }
+
+    public function messages() : array
+    {
+        return [
+            'new.required' => 'Vui lòng nhập chỉ số điện mới.',
         ];
     }
 }

@@ -50,7 +50,6 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/select_address', [StaffController::class, 'select_address'])->name('select_address');
             Route::get('/edit/{staff}', [StaffController::class, 'edit']);
             Route::post('/edit/{staff}', [StaffController::class, 'update']);
-
             Route::delete('/destroy', [StaffController::class, 'destroy']);
         });
         Route::prefix('service')->group(function () {
@@ -76,14 +75,12 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('electric_water')->group(function () {
             Route::get('/electric', [ElectricityController::class, 'month_electric']);
             Route::get('/list/{month}', [ElectricityController::class, 'list_electricity']);
+            Route::post('/list/{month}/', [ElectricityController::class, 'update']);
 
-            // Route::get('/list', [ElectricityController::class, 'list_electric']);
-            // Route::post('/list', [ElectricityController::class, 'create']);
-            // Route::get('/add', [ElectricityController::class, 'add']);
-            // Route::post('/add', [ElectricityController::class, 'create']);
-            // Route::get('/edit/{electricity}', [ElectricityController::class, 'edit']);
-            // Route::post('/edit/{electricity}', [ElectricityController::class, 'update']);
-            // Route::delete('/destroy', [ElectricityController::class, 'destroy']);
+            Route::get('/add_month', [ElectricityController::class, 'add']);
+
+
+
         });
     });
 

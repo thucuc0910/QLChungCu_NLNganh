@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+<div class="card-header ">
+    <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
+</div>
 <form action="" method="POST">
     <div class="card-body">
         <div class="row">
@@ -25,7 +28,7 @@
                     <select class="form-control" name="department_id">
                         <option value="">----------------------------------------Chọn căn hộ--------------------------------------------------------</option>
                         @foreach($departments as $department)
-                            <option value="{{ $department->id }}">{{ $department->code }}</option>
+                        <option value="{{ $department->id }}">{{ $department->code }}</option>
                         @endforeach
                     </select>
                 </div>

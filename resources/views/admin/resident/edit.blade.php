@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+<div class="card-header ">
+    <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
+</div>
 <form action="" method="POST">
     <div class="card-body">
         <div class="row">
@@ -22,9 +25,9 @@
                     <label>Căn hộ</label>
                     <select class="form-control" name="apartment_id">
                         @foreach($apartments as $apartment)
-                            <option value="{{ $apartment->id }}" {{ $resident->apartment_id == $apartment->id ? 'selected' : '' }}>
-                                {{ $apartment->code }}
-                            </option>
+                        <option value="{{ $apartment->id }}" {{ $resident->apartment_id == $apartment->id ? 'selected' : '' }}>
+                            {{ $apartment->code }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -68,7 +71,7 @@
                 <label>Ngày sinh</label>
                 <input type="date" name="birthday" class="form-control" value="{{$resident->birthday}}">
                 @error ('birtthday')
-                    <span style="color: red;">{{ $message }}</span>
+                <span style="color: red;">{{ $message }}</span>
                 @enderror
             </div>
         </div>
@@ -84,19 +87,17 @@
 
 
             <div class="form-group col-sm-12">
-            <label>Giới tính</label>
-            <div class="custom-control custom-radio">
-                <input class="custom-control-input" value="1" type="radio" id="active"  name="gender" 
-                {{ $resident->gender == 1 ? 'checked="" ' : '' }}>
-                <label for="active" class="custom-control-label">Nam</label>
-            </div>
-            <div class="custom-control custom-radio">
-                <input class="custom-control-input" value="0" type="radio" id="no_active" name="gender"
-                {{ $resident->gender == 0 ? 'checked="" ' : '' }}>
-                <label for="no_active" class="custom-control-label">Nữ</label>
+                <label>Giới tính</label>
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" value="1" type="radio" id="active" name="gender" {{ $resident->gender == 1 ? 'checked="" ' : '' }}>
+                    <label for="active" class="custom-control-label">Nam</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" value="0" type="radio" id="no_active" name="gender" {{ $resident->gender == 0 ? 'checked="" ' : '' }}>
+                    <label for="no_active" class="custom-control-label">Nữ</label>
 
+                </div>
             </div>
-        </div>
         </div>
     </div>
 

@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+<div class="card-header ">
+    <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
+</div>
 <form action="" method="POST">
     <div class="card-body">
 
@@ -57,7 +60,7 @@
                 <div class="form-group">
                     <label>Hướng</label>
                     <select class="form-control" name="direction">
-                        <option value="NAM" {{$apartment->direction == 'NAM' ? 'selected="" ' : ''}} >NAM</option>
+                        <option value="NAM" {{$apartment->direction == 'NAM' ? 'selected="" ' : ''}}>NAM</option>
                         <option value="BẮC" {{$apartment->direction == 'BẮC' ? 'selected="" ' : ''}}>BẮC</option>
                         <option value="ĐÔNG" {{$apartment->direction == 'ĐÔNG' ? 'selected="" ' : ''}}>ĐÔNG</option>
                         <option value="ĐÔNG BẮC" {{$apartment->direction == 'ĐÔNG BẮC' ? 'selected="" ' : ''}}>ĐÔNG BẮC</option>
@@ -106,7 +109,7 @@
             </div>
         </div>
 
-        
+
     </div>
 
 

@@ -1,7 +1,9 @@
 @extends('admin.main')
 
 @section('content')
-
+<div class="card-header ">
+    <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
+</div>
 <div class="card card-solid">
     <div class="card-body pb-0">
 
@@ -35,11 +37,11 @@
                                     </li>
 
                                     <li class="small ">
-                                        <i class="fas fa-lg fa-building col-sm-2"></i> 
+                                        <i class="fas fa-lg fa-building col-sm-2"></i>
                                         <span>{{ $apartment->description }}</span>
                                     </li>
                                     <li class="small ">
-                                        <i class="fas fa-lg fa-money-check-dollar col-sm-2"></i> 
+                                        <i class="fas fa-lg fa-money-check-dollar col-sm-2"></i>
                                         <span>{{ number_format($apartment->price)}} VNĐ</span>
                                     </li>
 
