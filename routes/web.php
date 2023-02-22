@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\ResidentController;
 
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\ElectricityController;
+use App\Http\Controllers\admin\WaterController;
 
 
 // Route::get('/', function () {
@@ -63,6 +64,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/add_ApartmentService', [ApartmentServiceController::class, 'add_service']);
             Route::post('/add_ApartmentService', [ApartmentServiceController::class, 'add_service_update']);
         });
+
+
         Route::prefix('resident')->group(function () {
             Route::get('/list', [ResidentController::class, 'list']);
             Route::get('/add', [ResidentController::class, 'add']);
@@ -73,11 +76,17 @@ Route::middleware(['auth'])->group(function () {
         });
 
         Route::prefix('electric_water')->group(function () {
+            // Electricity
             Route::get('/electric', [ElectricityController::class, 'month_electric']);
             Route::get('/list/{month}', [ElectricityController::class, 'list_electricity']);
             Route::post('/list/{month}/', [ElectricityController::class, 'update']);
-
             Route::get('/add_month', [ElectricityController::class, 'add']);
+
+            // Water
+            Route::get('/water', [WaterController::class, 'month_water']);
+            Route::get('/water/list/{month}', [WaterController::class, 'list_water']);
+            Route::post('/water/list/{month}/', [WaterController::class, 'update']);
+            Route::get('/water/add_month', [WaterController::class, 'add']);
 
 
 

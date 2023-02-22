@@ -14,6 +14,5 @@ class Month_water extends Model
     protected $fillable = [
         'month_id',
         'year_id',
-        'total',
     ];
 }

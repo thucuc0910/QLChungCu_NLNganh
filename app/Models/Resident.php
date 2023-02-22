@@ -14,6 +14,7 @@ class Resident extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
+        'user_id',
         'apartment_id',
         'name',
         'phone',

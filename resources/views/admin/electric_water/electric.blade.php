@@ -33,21 +33,22 @@
         <tbody>
             @foreach ($electricitymonths as $key => $month)
             <tr>
-                <td>{{ $month->id }}</td>
+                <td>{{ $key + 1 }}</td>
                 <td>
-                    @foreach ($ms as $key => $m)
+                    @foreach ($ms as $a => $m)
                     @if ($month->month_id == $m->id)
                     {{$m->name}}
                     @endif
                     @endforeach
                 </td>
                 <td>
-                    @foreach ($years as $key => $year)
+                    @foreach ($years as $b => $year)
                     @if ($month->year_id == $year->id)
                     {{$year->name}}
                     @endif
                     @endforeach
                 </td>
+                
                 <td>
                     <a class="btn btn-primary btn-sm" href="/admin/electric_water/list/{{ $month->month_id }}">
                         <i class="fa fa-edit"></i>

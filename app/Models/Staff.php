@@ -14,8 +14,9 @@ class Staff extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
+        'admin_id',
         'name',
-        'email',
+        'phone',
         'CMND',
         'gender',
         'birthday',

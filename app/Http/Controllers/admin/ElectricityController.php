@@ -34,7 +34,7 @@ class ElectricityController extends Controller
     public function month_electric()
     {
         return view('admin.electric_water.electric', [
-            'title' => 'Quản lý chỉ số điện',
+            'title' => 'Quản LÝ ĐIỆN',
             'electricitymonths' => $this->electricityService->getElectricityMonth(),
             'ms' => $this->electricityService->getMonth(),
             'years' => $this->electricityService->getYear(),
@@ -49,11 +49,15 @@ class ElectricityController extends Controller
         $total = 0;
         foreach ($electricities as $b => $electricity) {
             $a = $a + 1;
-            $total = $total + $electricity->new;
+            if($electricity->new == 0)
+                $total = $total + $electricity->new;
+            elseif($electricity->new > 0){
+                $total = $total + $electricity->new - $electricity->old;
+            }
         };
 
         if ($a == 0) {
-            foreach ($apartments as $key => $temp) {
+            foreach ($apartments as $y => $temp) {
                 $data = new Electricity;
                 $data->month_electric_id = $month->id;
                 $data->apartment_id = $temp->id;
@@ -61,15 +65,15 @@ class ElectricityController extends Controller
                 $data->new = 0;
                 $data->save();
             }
-        } elseif ($a != 0) {
+        } elseif ($a > 0) {
             $b = Electricity::where('month_electric_id', '=', $id)->first();
-            $c= $b->month_electric_id;
+            $c = $b->month_electric_id;
             $d = $c - 1;
             if ($id > 0) {
                 $e = Electricity::where('month_electric_id', '=', $d)->get();
-                foreach ($e as $key => $t) {
-                    foreach ($electricities as $key => $electricity) {
-                        if($electricity->apartment_id == $t->apartment_id){
+                foreach ($e as $s => $t) {
+                    foreach ($electricities as $x => $electricity) {
+                        if ($electricity->apartment_id == $t->apartment_id) {
                             $electricity->old = $t->new;
                             $electricity->save();
                         }
@@ -91,9 +95,7 @@ class ElectricityController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
-        // dd($data);
-        // $id = $month->id;
-        $total = 0;
+
         $electricities = $this->electricityService->get();
         if ($electricities == true) {
             foreach ($data['new'] as $key => $new) {
@@ -114,15 +116,33 @@ class ElectricityController extends Controller
     {
         $electricitymonths = $this->electricityService->getElectricityMonthLast();
 
-        $data = new Month_electricity;
-        if ($electricitymonths->month_id < 12) {
-            $data->month_id = $electricitymonths->month_id + 1;
-            $data->year_id = $electricitymonths->year_id;
-        } elseif ($electricitymonths->month_id == 12) {
-            $data->month_id = 12;
-            $data->year_id = $electricitymonths->year_id + 1;
+        $electrics = $this->electricityService->getElectricityMonth();
+        $a = 0;
+        foreach ($electrics as $key => $electric) {
+
+            $a = $a + 1;
         }
-        $data->save();
+
+        if ($a > 0) {
+
+            $data = new Month_electricity;
+            if ($electricitymonths->month_id < 12) {
+                $data->month_id = $electricitymonths->month_id + 1;
+                $data->year_id = $electricitymonths->year_id;
+            } elseif ($electricitymonths->month_id == 12) {
+                $data->month_id = 1;
+                $data->year_id = $electricitymonths->year_id + 1;
+            }
+            $data->save();
+
+        } elseif ($a == 0) {
+            $data = new Month_electricity();
+            $data->month_id =  1;
+            $data->year_id = 1;
+            $data->save();
+        }
+
+
 
         return redirect()->back();
     }

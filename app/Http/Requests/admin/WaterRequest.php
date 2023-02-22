@@ -13,7 +13,7 @@ class WaterController extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class WaterController extends FormRequest
     public function rules()
     {
         return [
-            //
+            'new' => 'required',
+        ];
+    }
+
+    public function messages() : array
+    {
+        return [
+            'new.required' => 'Vui lòng nhập chỉ số điện mới.',
         ];
     }
 }

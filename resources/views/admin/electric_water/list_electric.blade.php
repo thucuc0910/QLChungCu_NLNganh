@@ -61,9 +61,15 @@
                         <input class="new" name="new[{{$electric->id}}]" id="new" type="text" value="{{$electric->new}}" />
                     </td>
                     <td>
-                        <span name="" type="text" value="">{{$electric->old + $electric->new}} </span>
+                        <span name="" type="text" value="">
+                            @if($electric->new == 0)
+                            {{$electric->new}}
+                            @elseif($electric->new !=0 )
+                            {{$electric->new - $electric->old}}
+                            @endif
+                        </span>
                     </td>
-                    <!-- <span onclick="SaveElectricity( {{$electric->id}} )">Lưu</span> -->
+                    <!-- <span onclick="SaveElectricity({{$electric->id}} )">Lưu</span> -->
 
                 </tr>
                 @csrf

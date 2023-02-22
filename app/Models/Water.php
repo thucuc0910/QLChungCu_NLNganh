@@ -16,6 +16,5 @@ class Water extends Model
         'apartment_id',
         'old',
         'new',
-        'total',
     ];
 }

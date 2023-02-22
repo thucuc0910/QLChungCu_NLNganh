@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->nullable();
             $table->bigInteger('apartment_id')->unsigned();
             $table->string('name');
-            $table->string('phone');
+            $table->string('phone')->unique();
             $table->string('CMND');
             $table->integer('gender');
             $table->date('birthday');

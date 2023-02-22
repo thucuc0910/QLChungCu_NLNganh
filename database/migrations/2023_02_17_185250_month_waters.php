@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('month_water', function (Blueprint $table) {
+        Schema::create('month_waters', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('month_id')->unsigned();
             $table->bigInteger('year_id')->unsigned();
-            $table->integer('total');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('month_water');
+        Schema::dropIfExists('month_waters');
     }
 };
