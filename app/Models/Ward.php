@@ -9,6 +9,9 @@ class Ward extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+
     protected $fillable = [
         'xaid',
         'name',

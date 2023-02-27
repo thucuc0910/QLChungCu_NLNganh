@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin" class="brand-link">
-        <img src="/template/admin/img/admin/logo2.jpg"  class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">CHUNG CƯ</span>
+    <a href="#" class="brand-link">
+        <img src="/template/admin/img/admin/logo2.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">SUNHOUSE</span>
     </a>
 
     <!-- Sidebar -->
@@ -25,13 +25,25 @@
                         <li class="nav-item">
                             <a href="/admin/account/add" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm tài khoản</p>
+                                <p>Thêm tài khoản cư dân</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/account/add_staff" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm tài khoản nội bộ</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/admin/account/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách tài khoản</p>
+                                <p>D_sách tài khoản cư dân</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/account/list_staff" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>D_sách tài khoản nội bộ</p>
                             </a>
                         </li>
                     </ul>
@@ -39,7 +51,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-user-tie"></i>   
+                        <i class="nav-icon fa-solid fa-user-tie"></i>
                         <p>
                             Quản lí nhân viên
                             <i class="right fas fa-angle-left"></i>
@@ -106,7 +118,7 @@
                                 <p>Danh sách cư dân</p>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </li>
 
@@ -138,7 +150,7 @@
                                 <p>Thêm dịch vụ cho căn hộ</p>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </li>
 
@@ -152,12 +164,31 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/" class="nav-link">
+                            <a href="/admin/repair/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh sách sửa chữa</p>
                             </a>
                         </li>
-                       
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-message"></i>
+                        <p>
+                             Quản lí góp ý
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/feedback/list" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách góp ý</p>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 
@@ -184,7 +215,7 @@
                             </a>
                         </li>
                     </ul>
-                    
+
                 </li>
 
             </ul>

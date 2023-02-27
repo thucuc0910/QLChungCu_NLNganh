@@ -15,20 +15,20 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('admin_id')->nullable();
             $table->string('name');
             $table->string('phone')->unique();
-            $table->string('CMND');
+            $table->string('CMND')->unique();
             $table->integer('gender');
             $table->date('birthday');
-            $table->string('position');
+            $table->bigInteger('position_id')->unsigned();
             $table->Integer('city')->signed();
             $table->integer('district');
             $table->integer('ward');
-            $table->timestamps();
 
-            
 
+            $table->foreign('position_id')
+                ->references('id')->on('positions')
+                ->onDelete('cascade');
         });
     }
 

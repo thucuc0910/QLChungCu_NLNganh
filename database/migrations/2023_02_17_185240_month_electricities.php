@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('month_id')->unsigned();
             $table->bigInteger('year_id')->unsigned();
-            $table->integer('total');
         });
     }
 

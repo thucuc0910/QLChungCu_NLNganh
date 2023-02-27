@@ -30,8 +30,8 @@ class ResidentController extends Controller
     {
         return view('admin.resident.add', [
             'title' => 'THÊM CƯ DÂN',
-            'apartments' => $this->apartmentService->getApartment()
-            // 'residents' => $this->residentService->getParent()
+            'apartments' => $this->apartmentService->getApartment(),
+            'users' => $this->residentService->getUser()
         ]);
     }
     public function create(ResidentRequest $request)
@@ -54,7 +54,8 @@ class ResidentController extends Controller
         return view('admin.resident.edit', [
             'title' => 'CẬP NHẬT CƯ DÂN',
             'resident' => $resident,
-            'apartments' => $this->apartmentService->getApartment()
+            'apartments' => $this->apartmentService->getApartment(),
+            'users' => $this->residentService->getUser()
         ]);
     }
 

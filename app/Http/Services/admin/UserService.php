@@ -3,6 +3,8 @@
 namespace App\Http\Services\admin;
 
 use App\Models\User;
+use App\Models\Resident;
+use App\Models\Apartment;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\Input;
@@ -15,17 +17,23 @@ class UserService{
         return User::orderBy('id')->paginate(15);
     }
 
+    public function getResident(){
+        return Resident::all();
+    }
+
+    public function getApartment(){
+        return Apartment::all();
+    }
+
     public function create($request)
     {
-        $pass=Hash::make($request->resident_id);
+        $pass=Hash::make($request->id);
         try {
             User::create([
                 'name' => (string) $request->input('name'),
-                'phone' => (string) $request->input('phone'),
                 'resident_id' => (integer) $request->input('resident_id'),
                 'email' => (string) $request->input('email'),
                 'password' => (string) $pass,
-                'type' => (string) $request->input('type'),
                 // 'status' => (integer) $request->input('status')
             ]);
  
@@ -44,10 +52,9 @@ class UserService{
     {
         // dd($user->email);
         $user->name = (string)$request->input('name');
-        $user->phone = (string)$request->input('phone');
-        $user->email = (string)$request->input('email');
-        $user->type = (string)$request->input('type');
         $user->resident_id = (integer)$request->input('resident_id');
+        $user->email = (string)$request->input('email');
+        $user->password = (string)$request->input('password');
         // $user->status = (integer)$request->input('status');
         $user->save();
 

@@ -22,21 +22,17 @@
 
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>Căn hộ</label>
-                    <select class="form-control" name="apartment_id">
-                        @foreach($apartments as $apartment)
-                        <option value="{{ $apartment->id }}" {{ $resident->apartment_id == $apartment->id ? 'selected' : '' }}>
-                            {{ $apartment->code }}
-                        </option>
-                        @endforeach
-                    </select>
+                    <label>Số điện thoại</label>
+                    <input type="text" name="phone" class="form-control" placeholder="Nhập số điện thoại" value="{{$resident->phone}}">
+                    @error ('phone')
+                    <span style="color: red;">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-6">
-
                 <div class="form-group">
                     <label>CMND/CCCD</label>
                     <input type="text" name="CMND" class="form-control" placeholder="Nhập CMND hoặc CCCD" value="{{$resident->CMND}}">
@@ -48,17 +44,6 @@
 
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>Số điện thoại</label>
-                    <input type="text" name="phone" class="form-control" placeholder="Nhập số điện thoại" value="{{$resident->phone}}">
-                    @error ('phone')
-                    <span style="color: red;">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
                     <label>Quê quán</label>
                     <input type="text" name="address" class="form-control" placeholder="Nhập quên quán" value="{{$resident->address}}">
                     @error ('address')
@@ -66,7 +51,9 @@
                     @enderror
                 </div>
             </div>
+        </div>
 
+        <div class="row">
             <div class="form-group col-sm-6">
                 <label>Ngày sinh</label>
                 <input type="date" name="birthday" class="form-control" value="{{$resident->birthday}}">
@@ -74,10 +61,25 @@
                 <span style="color: red;">{{ $message }}</span>
                 @enderror
             </div>
+
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Căn hộ</label>
+                    <select class="form-control" name="apartment_id">
+                        <option value="">----------------------------------------Chọn căn hộ--------------------------------------------------------</option>
+                        @foreach($apartments as $apartment)
+                        <option value="{{ $apartment->id }}" {{ $resident->apartment_id == $apartment->id ? 'selected' : '' }}>
+                            {{ $apartment->code }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="row">
-            <div class="form-group col-sm-12">
+            <div class="form-group col-sm-6">
                 <label>Tình trạng</label>
                 <input type="text" name="status" class="form-control" placeholder="Nhập tình trạng" value="{{$resident->status}}">
                 @error ('status')
@@ -85,18 +87,21 @@
                 @enderror
             </div>
 
+            
+        </div>
 
-            <div class="form-group col-sm-12">
-                <label>Giới tính</label>
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" value="1" type="radio" id="active" name="gender" {{ $resident->gender == 1 ? 'checked="" ' : '' }}>
-                    <label for="active" class="custom-control-label">Nam</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" value="0" type="radio" id="no_active" name="gender" {{ $resident->gender == 0 ? 'checked="" ' : '' }}>
-                    <label for="no_active" class="custom-control-label">Nữ</label>
 
-                </div>
+
+        <div class="form-group col-sm-12">
+            <label>Giới tính</label>
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" value="1" type="radio" id="active" name="gender" {{ $resident->gender == 1 ? 'checked="" ' : '' }}>
+                <label for="active" class="custom-control-label">Nam</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" value="0" type="radio" id="no_active" name="gender" {{ $resident->gender == 0 ? 'checked="" ' : '' }}>
+                <label for="no_active" class="custom-control-label">Nữ</label>
+
             </div>
         </div>
     </div>

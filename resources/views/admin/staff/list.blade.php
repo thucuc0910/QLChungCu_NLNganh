@@ -9,7 +9,7 @@
         <tr>
             <th style="width: 50px">ID</th>
             <th>Họ và tên</th>
-            <th>Email</th>
+            <th>Số điện thoại</th>
             <th>CMND/CCCD</th>
             <th>Giới tính</th>
             <th>Ngày sinh</th>
@@ -22,7 +22,7 @@
         <tr>
             <td>{{ $staff->id }}</td>
             <td>{{ $staff->name }}</td>
-            <td>{{ $staff->email }}</td>
+            <td>{{ $staff->phone }}</td>
             <td>{{ $staff->CMND }}</td>
             <td>
                 @if ($staff->gender == 1)
@@ -32,11 +32,13 @@
                 @endif
             </td>
             <td>{{ $staff->birthday }}</td>
-            <td>@if ($staff->position == 'adm')
-                <p>Quản lý</p>
-                @elseif ($staff->position == 'stf')
-                <p>Nhân viên</p>
+            <td>
+                @foreach ($positions as $a => $position)
+
+                @if ($staff->position_id == $position->id)
+                <p>{{$position->name}}</p>
                 @endif
+                @endforeach
             </td>
             <!-- <td>@if ($staff->status == 1) 
                             <span class="btn btn-success btn-sm">YES</span>

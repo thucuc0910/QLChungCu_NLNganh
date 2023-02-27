@@ -6,6 +6,10 @@ use App\Models\Staff;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Ward;
+use App\Models\Admin;
+use App\Models\Position;
+
+
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\Input;
@@ -20,6 +24,15 @@ class StaffService
         return Staff::orderBy('id')->paginate(15);
     }
 
+    public function getAdmin()
+    {
+        return Admin::all();
+    }
+
+    public function getPosition()
+    {
+        return Position::all();
+    }
     public function getCity()
     {
         return City::orderBy('matp','ASC')->get();
@@ -41,11 +54,11 @@ class StaffService
         try {
             Staff::create([
                 'name' => (string) $request->input('name'),
-                'email' => (string) $request->input('email'),
+                'phone' => (string) $request->input('phone'),
                 'CMND' => (string) $request->input('CMND'),
                 'gender' => (integer) $request->input('gender'),
                 'birthday' => $request->input('birthday'),
-                'position' => (string) $request->input('position'),
+                'position_id' => (string) $request->input('position_id'),
                 'city' => (string) $request->input('city'),
                 'district' => (string) $request->input('district'),
                 'ward' => (string) $request->input('ward'),
@@ -65,12 +78,13 @@ class StaffService
 
     public function update($request, $staff): bool
     {
+
         $staff->name = (string) $request->input('name');
-        $staff->email = (string) $request->input('email');
+        $staff->phone = (string) $request->input('phone');
         $staff->CMND = (string) $request->input('CMND');
         $staff->gender = (integer) $request->input('gender');
         $staff->birthday = $request->input('birthday');
-        $staff->position = (string) $request->input('position');
+        $staff->position_id = (string) $request->input('position_id');
         $staff->city = (string) $request->input('city');
         $staff->district = (string) $request->input('district');
         $staff->ward = (string) $request->input('ward');

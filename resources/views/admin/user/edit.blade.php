@@ -18,68 +18,41 @@
                     <span style="color: red;">{{ $message }}</span>
                     @enderror
                 </div>
-
-
             </div>
 
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="phone">Số điện thoại</label>
-                    <input type="text" name="phone" class="form-control" placeholder="Nhập số điện thoại" value="{{ $user->phone }}">
-                    @error ('phone')
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control" placeholder="Nhập email" value="{{ $user->email }}">
+                    @error ('email')
                     <span style="color: red;">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" name="email" class="form-control" placeholder="Nhập email" value="{{ $user->email }}">
-            @error ('email')
-            <span style="color: red;">{{ $message }}</span>
-            @enderror
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Cư dân</label>
+                <select class="form-control" name="apartment_id">
+                    <option value="">----------------------------------------Chọn cư dân--------------------------------------------------------</option>
+                    @foreach($residents as $resident)
+                    <option value="{{ $resident->id }}" {{ $user->resident_id == $resident->id ? 'selected' : '' }}>
+                        {{ $resident->name }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-6 hidden">
+            <div class="form-group">
+                <input type="text" name="password" class="form-control" value="{{ $user->password }}">
+                @error ('password')
+                <span style="color: red;">{{ $message }}</span>
+                @enderror
+            </div>
         </div>
 
-
-        <div class="row">
-            <div class="col-sm-6">
-
-                <div class="form-group">
-                    <label>Cư dân</label>
-                    <select class="form-control" name="resident_id">
-                        <option value="0">Không có căn hộ</option>
-
-                        @foreach($residents as $resident)
-                        <option value="{{ $resident->id }}" {{ $user->resident_id == $resident->id ? 'selected' : '' }}>
-                            {{ $resident->name }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-
-                <div class="form-group">
-                    <label>Loại</label>
-                    <select class="form-control" name="type">
-                        <option value="adm" {{ $user->type == 'adm' ? 'selected="" ' : '' }}>Quản lý</option>
-                        <option value="stf" {{ $user->type == 'stf' ? 'selected="" ' : '' }}>Nhân viên</option>
-                        <option value="usr" {{ $user->type == 'usr' ? 'selected="" ' : '' }}>Người dùng</option>
-                    </select>
-                    @error ('type')
-                    <span style="color: red;">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="form-group hidden">
-                <input type="text" name="password" value="{{ $user->password }}">
-            </div>
-            <!-- /.card-body -->
-
-
-        </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">CẬP NHẬT</button>
         </div>

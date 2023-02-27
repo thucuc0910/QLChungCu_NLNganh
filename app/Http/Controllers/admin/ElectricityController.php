@@ -95,13 +95,11 @@ class ElectricityController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
-
         $electricities = $this->electricityService->get();
         if ($electricities == true) {
             foreach ($data['new'] as $key => $new) {
                 foreach ($electricities as $t => $electricity) {
                     if ($electricity['id'] == $key) {
-
                         $electricity['new'] = $new;
                         $electricity->save();
                     }

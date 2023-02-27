@@ -22,9 +22,9 @@
 
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control email" placeholder="Nhập email">
-                    @error ('email')
+                    <label >Số điện thoại</label>
+                    <input type="text" name="phone" class="form-control phone" placeholder="Nhập số điện thoại">
+                    @error ('phone')
                     <span style="color: red;">{{ $message }}</span>
                     @enderror
                 </div>
@@ -45,27 +45,26 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Chức vụ</label>
-                    <select class="form-control position" name="position">
-                        <option value="adm">Quản lý</option>
-                        <option value="stf">Nhân viên</option>
+                    <select class="form-control position_id" name="position_id">
+                        <option value="">----------------------------------------Chọn chức vụ--------------------------------------------------------</option>
+                        @foreach($positions as $position)
+                        <option value="{{ $position->id }}">{{ $position->name }}</option>
+                        @endforeach
                     </select>
-                    @error ('type')
-                    <span style="color: red;">{{ $message }}</span>
-                    @enderror
                 </div>
             </div>
         </div>
         <div class="row">
-
-
+            <div class="form-group col-sm-6">
+                <label>Ngày sinh</label>
+                <input type="date" name="birthday" class="form-control birthday">
+                @error ('birtthday')
+                <span style="color: red;">{{ $message }}</span>
+                @enderror
+            </div>
+            
         </div>
-        <div class="form-group col-sm-6">
-            <label>Ngày sinh</label>
-            <input type="date" name="birthday" class="form-control birthday">
-            @error ('birtthday')
-            <span style="color: red;">{{ $message }}</span>
-            @enderror
-        </div>
+
         <div class="col-sm-6">
             <div class="form-group">
                 <label>Tỉnh</label>
@@ -109,8 +108,6 @@
 
     </div>
 
-
-
     <!-- /.card-body -->
 
     <div class="card-footer">
@@ -125,9 +122,9 @@
     $(document).ready(function() {
         $('.add_staff').click(function() {
             var name = $('.name').val();
-            var email = $('.email').val();
+            var phone = $('.phone').val();
             var CMND = $('.CMND').val();
-            var position = $('.position').val();
+            var position_id = $('.position_id').val();
             var birthday = $('.birthday').val();
             var gender = $('.gender').val();
             var city = $('.city').val();
@@ -135,23 +132,14 @@
             var ward = $('.ward').val();
             var _token = $('input[name="_token"]').val();
 
-            // alert(name);
-            // alert(email);
-            // alert(CMND);
-            // alert(position);
-            // alert(birthday);
-            // alert(gender);
-            // alert(city);
-            // alert(district);
-            // alert(ward);
             $.ajax({
-                url: "{{url('admin/staff/add_staff')}}",
+                url: "{{url('/admin/staff/add_staff')}}",
                 method: 'Post',
                 data: {
                     name: name,
-                    email: email,
+                    phone: phone,
                     CMND: CMND,
-                    position: position,
+                    position_id: position_id,
                     birthday: birthday,
                     gender: gender,
                     city: city,

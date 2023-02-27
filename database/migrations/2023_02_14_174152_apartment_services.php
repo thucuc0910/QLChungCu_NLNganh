@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('service_id')->unsigned();
             $table->date('date_start');
             $table->date('date_end');
-            $table->timestamps();
 
             $table->foreign('apartment_id')
             ->references('id')->on('apartments')

@@ -25,7 +25,6 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'phone' => 'required|min:10|max:10',
             'email' => 'required|email:users,email',
             'password' => 'required|min:5',       
         ];
@@ -35,13 +34,10 @@ class UserRequest extends FormRequest
     {
         return [
             'name.required' => 'Vui lòng nhập họ và tên',
-            'phone.required' => 'Vui lòng nhập số điện thoại',
-            'phone.max' => 'Chiều dài số điện thoại không đúng',
-            'phone.min' => 'Chiều dài số điện thoại không đúng',
             'email.required' => 'Vui lòng nhập email',
             'email.email' => 'Không đúng định dạng email (example@gmail.com)',
             'email.unique' => 'Email đã được đăng kí',
-            'password.required' => 'Vui lòng nhập passwod',
+            'password.required' => 'Vui lòng nhập password',
             'password.min' => 'Mật khẩu ít nhất 5 kí tự',
         ];
     }

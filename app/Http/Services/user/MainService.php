@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Services\user;
+
+use App\Models\User;
+use App\Models\Resident;
+use App\Models\Apartment;
+use App\Models\Service;
+
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Hash;
+
+class MainService{
+
+    public function get(){
+        return User::orderBy('id')->paginate(15);
+    }
+
+    public function getResident(){
+        return Resident::all();
+    }
+
+    public function getApartmentAll(){
+        return Apartment::all();
+    }
+
+    public function getService()
+    {
+        return Service::all();
+    }
+
+    
+}

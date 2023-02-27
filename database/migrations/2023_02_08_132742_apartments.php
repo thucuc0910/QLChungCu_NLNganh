@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->integer('floor');
             $table->float('length');
             $table->float('width');
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->integer('status');
             $table->string('description');
             $table->integer('price');
-            $table->timestamps();
         });
     }
 

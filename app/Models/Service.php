@@ -13,6 +13,8 @@ class Service extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
         'code',

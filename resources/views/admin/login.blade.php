@@ -17,7 +17,7 @@
         <div class="card-body login-card-body">
           <!-- <p class="login-box-msg">Sign in to start your session</p> -->
           @include('store.alert')
-          <form action="/login/house" method="post">
+          <form action="/admin/house" method="post" >
             <div class="input-group mb-3" >
               <input type="email" name="email" class="form-control" placeholder="Email">
               <div class="input-group-append">

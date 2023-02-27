@@ -12,6 +12,8 @@ class Apartment extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public $timestamps = false;
+
 
     protected $fillable = [
         'code',

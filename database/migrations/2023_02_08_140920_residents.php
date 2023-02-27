@@ -15,20 +15,19 @@ return new class extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->nullable();
             $table->bigInteger('apartment_id')->unsigned();
             $table->string('name');
             $table->string('phone')->unique();
-            $table->string('CMND');
+            $table->string('CMND')->unique();
             $table->integer('gender');
             $table->date('birthday');
             $table->string('address');
             $table->string('status');
-            $table->timestamps();
 
             $table->foreign('apartment_id')
                 ->references('id')->on('apartments')
                 ->onDelete('cascade');
+
         });
     }
 

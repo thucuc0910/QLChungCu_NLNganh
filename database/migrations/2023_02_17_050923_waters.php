@@ -19,14 +19,6 @@ return new class extends Migration
             $table->bigInteger('apartment_id')->unsigned();
             $table->integer('old');
             $table->integer('new');
-            $table->integer('total');
-
-            // $table->foreign('department_id')
-            //     ->references('id')->on('departments')
-            //     ->onDelete('cascade');
-            // $table->foreign('month_id')
-            //     ->references('id')->on('months')
-            //     ->onDelete('cascade');
         });
     }
 

@@ -26,7 +26,7 @@ class ApartmentServiceController extends Controller
         return view('admin.service.add_ApartmentService',[
             'title' => "THÊM DỊCH VỤ CHO CĂN HỘ",
             'services' => $this->serviceService->get(),
-            'departments' => $this->apartmentService->get(),
+            'apartments' => $this->apartmentService->get(),
         ]);
     }
 

@@ -24,7 +24,7 @@ class ApartmentServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'department_id' => 'required',
+            'apartment_id' => 'required',
             'service_id' => 'required',
             'date_start' => 'required',
             'date_end' => 'required',
@@ -34,8 +34,8 @@ class ApartmentServiceRequest extends FormRequest
     public function messages() : array
     {
         return [
-            'department_id.required' => 'Vui lòng chọn dịch vụ',
-            'service_id.required' => 'Vui lòng chọn căn hộ',
+            'apartment_id.required' => 'Vui lòng chọn căn hộ',
+            'service_id.required' => 'Vui lòng chọn dịch vụ',
             'date_start.required' => 'Vui lòng chọn ngày bắt đầu',
             'date_end.required' => 'Vui lòng chọn ngày kết thúc',
 

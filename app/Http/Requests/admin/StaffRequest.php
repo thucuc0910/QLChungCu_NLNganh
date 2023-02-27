@@ -25,9 +25,9 @@ class StaffRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email:users,email',
+            'phone' => 'required|min:10|max:10',
             'CMND' => 'required',
-            'position' => 'required',
+            'position_id' => 'required',
             'gender' => 'required',
             'city' => 'required',
             'district' => 'required',
@@ -41,11 +41,11 @@ class StaffRequest extends FormRequest
     {
         return [
             'name.required' => 'Vui lòng nhập họ và tên',
-            'email.required' => 'Vui lòng nhập email',
-            'email.email' => 'Không đúng định dạng email',
-            'email.unique' => 'Email đã được đăng kí',
+            'phone.required' => 'Vui lòng nhập số điện thoại',
+            'phone.min' => 'Số điện thoại không đúng',
+            'phone.max' => 'Số điện thoại không đúng',
             'CMND.required' => 'Vui lòng nhập CMND hoặc CCCD',
-            'position.required' => 'Vui lòng chọn chức vụ',
+            'position_id.required' => 'Vui lòng chọn chức vụ',
             'gender.required' => 'Vui lòng chọn giới tính',
             'city.required' => 'Vui lòng chọn thành phố',
             'district.required' => 'Vui lòng chọn quận/huyện',

@@ -9,8 +9,10 @@ class ApartmentService extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
-        'department_id',
+        'apartment_id',
         'service_id',
         'date_start',
         'date_end',

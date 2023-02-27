@@ -31,9 +31,8 @@ class StaffController extends Controller
 
         return view('admin.staff.add', [
             'title' => 'THÊM NHÂN VIÊN',
-            // 'districts' => $this->StaffService->getProvine(),
-            // 'wards' => $this->StaffService->getWard(),
-
+            'admins' => $this->StaffService->getAdmin(),
+            'positions' => $this->StaffService->getPosition(),
         ])->with(compact('city'));
     }
 
@@ -41,13 +40,13 @@ class StaffController extends Controller
         $data = $request->all();
         $staff = new Staff();
         $staff -> name= $data['name'];
-        $staff -> email = $data['email'];
+        $staff -> phone = $data['phone'];
         $staff -> CMND = $data['CMND'];
-        $staff -> position = $data['position'];
+        $staff -> position_id = $data['position_id'];
         $staff ->birthday = $data['birthday'];
         $staff -> gender = $data['gender'];
         $staff -> city = $data['city'];
-        $staff -> provine = $data['provine'];
+        $staff -> district = $data['district'];
         $staff -> ward = $data['ward'];
         $staff->save();
 
@@ -92,6 +91,7 @@ class StaffController extends Controller
         return view('admin.staff.list', [
             'title' => "DANH SÁCH NHÂN VIÊN",
             'staffs' => $this->StaffService->get(),
+            'positions' => $this->StaffService->getPosition(),
         ]);
     }
 
@@ -100,6 +100,8 @@ class StaffController extends Controller
         return view('admin.staff.edit', [
             'title' => 'CẬP NHẬT NHÂN VIÊN',
             'staff' => $staff,
+            'admins' => $this->StaffService->getAdmin(),
+            'positions' => $this->StaffService->getPosition(),
             'cities' => $this->StaffService->getCity(),
             'districts' => $this->StaffService->getDistrict(),
             'wards' => $this->StaffService->getWard(),

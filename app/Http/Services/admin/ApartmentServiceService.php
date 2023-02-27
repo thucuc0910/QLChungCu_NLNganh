@@ -15,11 +15,9 @@ class ApartmentServiceService
     public function createDepartmentService($request)
     {
 
-        // dd($request->input('service_id'));
-        // $pass=Hash::make($request->password);
         try {
             ApartmentService::create([
-                'department_id' => (integer)$request->input('department_id'),
+                'apartment_id' => (integer)$request->input('apartment_id'),
                 'service_id' => (Integer)$request->input('service_id'),
                 'date_start' => $request->input('date_start'),
                 'date_end' => $request->input('date_end'),

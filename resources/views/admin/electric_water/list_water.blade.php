@@ -25,12 +25,6 @@
                     <th>Chỉ số cũ</th>
                     <th>Chỉ số mới</th>
                     <th>Tổng(kwh)</th>
-                    <!-- <th style="width: 100px">
-                        <a class="btn btn-primary btn-sm">
-                            <button type="button" class="btn btn-primary">THÊM</button>
-
-                        </a>
-                    </th> -->
                 </tr>
             </thead>
             <tbody>

@@ -21,18 +21,6 @@
       </div>
 
       <div class="col-sm-6">
-        <div class="form-group">
-          <label for="phone">Số điện thoại</label>
-          <input type="text" name="phone" class="form-control" placeholder="Nhập số điện thoại">
-          @error ('phone')
-          <span style="color: red;">{{ $message }}</span>
-          @enderror
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
 
         <div class="form-group">
           <label for="email">Email</label>
@@ -42,7 +30,9 @@
           @enderror
         </div>
       </div>
+    </div>
 
+    <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
           <label for="password">Mật khẩu</label>
@@ -52,33 +42,16 @@
           @enderror
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
 
+      <div class="col-sm-6">
         <div class="form-group">
           <label>Cư dân</label>
           <select class="form-control" name="resident_id">
             <option value="">----------------------------------------Chọn cư dân--------------------------------------------------------</option>
-            <option value="0">Không có căn hộ</option>
             @foreach($residents as $resident)
             <option value="{{ $resident->id }}">{{ $resident->name }}</option>
             @endforeach
           </select>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label>Loại</label>
-          <select class="form-control" name="type">
-            <option value="adm">Quản lý</option>
-            <option value="stf">Nhân viên</option>
-            <option value="usr">Người dùng</option>
-          </select>
-          @error ('type')
-          <span style="color: red;">{{ $message }}</span>
-          @enderror
         </div>
       </div>
     </div>

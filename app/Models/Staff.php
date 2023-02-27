@@ -13,8 +13,9 @@ class Staff extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public $timestamps = false;
+
     protected $fillable = [
-        'admin_id',
         'name',
         'phone',
         'CMND',

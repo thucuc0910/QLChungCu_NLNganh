@@ -3,6 +3,7 @@
 namespace App\Http\Services\admin;
 
 use App\Models\Resident;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\Input;
@@ -13,6 +14,15 @@ class ResidentService{
 
     public function get(){
         return Resident::orderBy('id')->paginate(15);
+    }
+
+    public function getUser(){
+        return User::all();
+    }
+
+    public function getResident()
+    {
+        return Resident::where('apartment_id' , '!=', NULL)->get();
     }
 
     public function create($request)
@@ -65,11 +75,6 @@ class ResidentService{
         }
 
         return false;
-    }
-
-    public function getResident()
-    {
-        return Resident::where('apartment_id' , '!=', NULL)->get();
     }
 
 }

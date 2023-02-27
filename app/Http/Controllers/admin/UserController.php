@@ -27,9 +27,8 @@ class UserController extends Controller
     public function add()
     {
         return view('admin.user.add', [
-            'title' => 'THÊM TÀI KHOẢN',
-            'residents' => $this->residentService->getResident()
-            // 'users' => $this->userService->getParent()
+            'title' => 'THÊM TÀI KHOẢN CHO CƯ DÂN',
+            'residents' => $this->userService->getResident()
         ]);
     }
     public function create(UserRequest $request)
@@ -43,7 +42,8 @@ class UserController extends Controller
     {
         return view('admin.user.list',[
             'title' => "DANH SÁCH TÀI KHOẢN",
-            'users' => $this->userService->get()
+            'users' => $this->userService->get(),
+            'residents' => $this->userService->getResident()
         ]);
     }
 
@@ -52,7 +52,7 @@ class UserController extends Controller
         return view('admin.user.edit', [
             'title' => 'CẬP NHẬT TÀI KHOẢN',
             'user' => $user,
-            'residents' => $this->residentService->getResident()
+            'residents' => $this->userService->getResident()
         ]);
     }
 

@@ -4,7 +4,7 @@
 <form method="Post">
 
     <div class="card-header  d-flex justify-content-end">
-        <button type="submit" name="add_staff" class="btn btn-secondary add_staff ">
+        <button type="submit"  class="btn btn-secondary ">
             <i class="fa-solid fa-floppy-disk" placeholder="Lưu"></i>
         </button>
     </div>

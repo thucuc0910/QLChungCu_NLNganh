@@ -22,9 +22,9 @@
 
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" placeholder="Nhập email" value="{{$staff->email}}">
-                    @error ('email')
+                    <label for="">Số điện thoại</label>
+                    <input type="text" name="phone" class="form-control" placeholder="Nhập số điện thoại" value="{{$staff->phone}}">
+                    @error ('phone')
                     <span style="color: red;">{{ $message }}</span>
                     @enderror
                 </div>
@@ -45,27 +45,27 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Chức vụ</label>
-                    <select class="form-control" name="position">
-                        <option value="adm" {{ $staff->gender == 0 ? 'selected="" ' : '' }}>Quản lý</option>
-                        <option value="stf" {{ $staff->gender == 0 ? 'selected="" ' : '' }}>Nhân viên</option>
+                    <select class="form-control" name="position_id">
+                        @foreach($positions as $position)
+                        <option value="{{ $position->id }}" {{ $staff->position_id == $position->id ? 'selected' : '' }}>
+                            {{ $position->name }}
+                        </option>
+                        @endforeach
                     </select>
-                    @error ('type')
-                    <span style="color: red;">{{ $message }}</span>
-                    @enderror
                 </div>
             </div>
         </div>
         <div class="row">
-
+            <div class="form-group col-sm-6">
+                <label>Ngày sinh</label>
+                <input type="date" name="birthday" class="form-control" value="{{$staff->birthday}}">
+                @error ('birtthday')
+                <span style="color: red;">{{ $message }}</span>
+                @enderror
+            </div>
 
         </div>
-        <div class="form-group col-sm-12">
-            <label>Ngày sinh</label>
-            <input type="date" name="birthday" class="form-control" value="{{$staff->birthday}}">
-            @error ('birtthday')
-            <span style="color: red;">{{ $message }}</span>
-            @enderror
-        </div>
+
         <div class="col-sm-6">
             <div class="form-group">
                 <label>Tỉnh</label>
