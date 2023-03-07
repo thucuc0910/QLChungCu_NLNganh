@@ -4,9 +4,9 @@
 @endsection
 
 @section('content')
-<div class="card-header ">
+<!-- <div class="card-header ">
     <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
-</div>
+</div> -->
 <form action="" method="POST">
     <div class="card-body">
         <div class="row">
@@ -24,7 +24,7 @@
 
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>Dịch vụ</label>
+                    <label>Căn hộ</label>
                     <select class="form-control" name="apartment_id">
                         <option value="">----------------------------------------Chọn căn hộ--------------------------------------------------------</option>
                         @foreach($apartments as $apartment)
@@ -39,7 +39,7 @@
         </div>
 
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="form-group col-sm-6">
                 <label>Ngày bắt đầu</label>
                 <input type="date" name="date_start" class="form-control">
@@ -56,7 +56,7 @@
                 <span style="color: red;">{{ $message }}</span>
                 @enderror
             </div>
-        </div>
+        </div> -->
 
 
     </div>

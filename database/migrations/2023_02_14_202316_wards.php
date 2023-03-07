@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('type');
             $table->integer('maqh');
             $table->primary(['xaid']);
+
+            $table->foreign('maqh')
+            ->references('maqh')->on('districts')
+            ->onDelete('cascade');
             
         });
     }

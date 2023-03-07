@@ -4,9 +4,9 @@
 @endsection
 
 @section('content')
-<div class="card-header ">
+<!-- <div class="card-header ">
   <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
-</div>
+</div> -->
 <form action="" method="POST">
   <div class="card-body">
     <div class="row">
@@ -49,8 +49,13 @@
           <select class="form-control" name="resident_id">
             <option value="">----------------------------------------Chọn cư dân--------------------------------------------------------</option>
             @foreach($residents as $resident)
+            @foreach($users as $user)
+            @if($resident->id != $user->resident_id)
             <option value="{{ $resident->id }}">{{ $resident->name }}</option>
+            @endif
             @endforeach
+            @endforeach
+
           </select>
         </div>
       </div>

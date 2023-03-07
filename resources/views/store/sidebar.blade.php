@@ -12,212 +12,116 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-users-rectangle"></i>
-                        <p>
-                            Quản lí tài khoản
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/account/add" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm tài khoản cư dân</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/account/add_staff" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm tài khoản nội bộ</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/account/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>D_sách tài khoản cư dân</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/account/list_staff" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>D_sách tài khoản nội bộ</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-user-tie"></i>
-                        <p>
-                            Quản lí nhân viên
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/staff/add" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm nhân viên</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/staff/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách nhân viên</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-building-user"></i>
-                        <p>
-                            Quản lí căn hộ
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/apartment/add" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm căn hộ</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/apartment/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách căn hộ</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/resident/list" class="nav-link">
                         <i class="nav-icon fa-solid fa-users"></i>
                         <p>
-                            Quản lí cư dân
-                            <i class="right fas fa-angle-left"></i>
+                            Cư dân
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/resident/add" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm cư dân</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/resident/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách cư dân</p>
-                            </a>
-                        </li>
-
-                    </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/staff/list" class="nav-link">
+                        <i class="nav-icon fa-solid fa-user-tie"></i>
+                        <p>
+                            Nhân viên
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/account/list" class="nav-link">
+                        <i class="nav-icon fa-solid fa-id-card"></i>
+                        <p>
+                            Tài khoản cư dân
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/account/list_staff" class="nav-link">
+                        <i class="nav-icon fa-solid fa-users-rectangle"></i>
+                        <p>
+                            Tài khoản nhân viên
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/apartment/list" class="nav-link">
+                        <i class="nav-icon fa-solid fa-building-user"></i>
+                        <p>
+                            Căn hộ
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/service/list" class="nav-link">
                         <i class="nav-icon fa-solid fa-list"></i>
                         <p>
-                            Quản lí dịch vụ
-                            <i class="right fas fa-angle-left"></i>
+                            Dịch vụ
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/service/add" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm dịch vụ</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/service/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách dịch vụ</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/admin/service/add_ApartmentService" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm dịch vụ cho căn hộ</p>
-                            </a>
-                        </li>
-
-                    </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-screwdriver-wrench"></i>
-                        <p>
-                            Quản lí sửa chữa
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/repair/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách sửa chữa</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/feedback/list" class="nav-link">
                         <i class="nav-icon fa-solid fa-message"></i>
                         <p>
-                             Quản lí góp ý
-                            <i class="right fas fa-angle-left"></i>
+                            Góp ý
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/feedback/list" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách góp ý</p>
-                            </a>
-                        </li>
-
-                    </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-bolt"></i>
+                    <a href="/admin/repair/list" class="nav-link">
+                        <i class="nav-icon fa-solid fa-screwdriver-wrench"></i>
                         <p>
-                            Quản lí điện nước
-                            <i class="right fas fa-angle-left"></i>
+                            Sửa chữa
                         </p>
                     </a>
-
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admin/electric_water/electric" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Quản lý điện</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/electric_water/water" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Quản lý nước</p>
-                            </a>
-                        </li>
-                    </ul>
-
                 </li>
 
+                <li class="nav-item">
+                    <a href="/admin/electric_water/electric" class="nav-link">
+                        <i class="nav-icon fa-solid fa-bolt"></i>
+                        <p>
+                            Quản lý điện
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/electric_water/water" class="nav-link">
+                        <i class="nav-icon fa-solid fa-droplet"></i>
+                        <p>
+                            Quản lý nước
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/receipt/index" class="nav-link">
+                        <i class="nav-icon fa-solid fa-receipt"></i>
+                        <p>
+                            Tiền thuê
+                        </p>
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="nav nav-pills nav-sidebar flex-column d-flex t-50 ">
+                <li class="nav-item">
+                    <a href="/admin/logout" class="nav-link">
+                        <i class="nav-icon fa-solid fa-right-from-bracket"></i>
+                        <p>
+                            ĐĂNG XUẤT
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
 

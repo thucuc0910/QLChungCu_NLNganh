@@ -28,7 +28,8 @@ class UserController extends Controller
     {
         return view('admin.user.add', [
             'title' => 'THÊM TÀI KHOẢN CHO CƯ DÂN',
-            'residents' => $this->userService->getResident()
+            'residents' => $this->userService->getResident(),
+            'users' => $this->userService->get(),
         ]);
     }
     public function create(UserRequest $request)
@@ -38,11 +39,18 @@ class UserController extends Controller
 
         return redirect()->back();
     }
-    public function list()
+    public function list(Request $request)
     {
+        $users = User::paginate(25);
+
+        if ($request->search) {
+            $users = User::where('name', 'like', '%'.$request->search.'%')->paginate(25);
+            $users->appends(['search' => $request->search]);
+        }
+
         return view('admin.user.list',[
-            'title' => "DANH SÁCH TÀI KHOẢN",
-            'users' => $this->userService->get(),
+            'title' => "DANH SÁCH TÀI KHOẢN CƯ DÂN",
+            'users' => $users,
             'residents' => $this->userService->getResident()
         ]);
     }

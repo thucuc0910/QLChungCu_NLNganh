@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 
 use App\Http\Services\admin\ResidentService;
-use App\Http\Services\admin\ApartmentService;
+use App\Http\Services\admin\Apartment_Service;
 use App\Http\Requests\admin\ResidentRequest;
 use App\Models\Resident;
 
@@ -20,7 +20,7 @@ class ResidentController extends Controller
     protected $apartmentService;
 
 
-    public function __construct(ResidentService $residentService, ApartmentService $apartmentService)
+    public function __construct(ResidentService $residentService, Apartment_Service $apartmentService)
     {
         $this->residentService = $residentService;
         $this->apartmentService = $apartmentService;
@@ -40,11 +40,18 @@ class ResidentController extends Controller
 
         return redirect()->back();
     }
-    public function list()
+    public function list(Request $request)
     {
+        $residents = Resident::paginate(25);
+
+        if ($request->search) {
+            $residents = Resident::where('name', 'like', '%'.$request->search.'%')->paginate(25);
+            $residents->appends(['search' => $request->search]);
+        }
+
         return view('admin.resident.list',[
             'title' => "DANH SÁCH CƯ DÂN",
-            'residents' => $this->residentService->get(),
+            'residents' => $residents,
             'apartments' =>    $this->apartmentService->get(),
         ]);
     }
@@ -82,4 +89,6 @@ class ResidentController extends Controller
             'error' => true  
         ]);
     }
+
+    
 }

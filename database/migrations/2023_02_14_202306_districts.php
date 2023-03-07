@@ -21,7 +21,9 @@ return new class extends Migration
             $table->integer('matp');
             $table->primary(['maqh']);
 
-            
+            $table->foreign('matp')
+                ->references('matp')->on('cities')
+                ->onDelete('cascade');
         });
     }
 

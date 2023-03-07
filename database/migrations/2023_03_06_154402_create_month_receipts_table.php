@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('month_electricities', function (Blueprint $table) {
+        Schema::create('month_receipts', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('month_id')->unsigned();
             $table->bigInteger('year_id')->unsigned();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('month_electricities');
+        Schema::dropIfExists('month_receipts');
     }
 };

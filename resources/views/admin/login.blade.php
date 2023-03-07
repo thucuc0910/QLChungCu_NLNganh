@@ -5,7 +5,7 @@
   @include('store.head')
 </head>
 
-<body class="login-page" style="min-height: 500px ; background-image:url(/template/admin/dist/img/background5.webp);" >
+<body class="login-page" style="min-height: 500px ; background-image:url(/template/admin/img/admin/logo2.jpg);" >
   
   <div class="login-box " >
     <div class="card  card-outline card-primary">

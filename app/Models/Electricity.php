@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Electricity extends Model
 {
+
     use HasFactory;
 
     public $timestamps = false;

@@ -17,6 +17,14 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('month_id')->unsigned();
             $table->bigInteger('year_id')->unsigned();
+
+            $table->foreign('month_id')
+                ->references('id')->on('months')
+                ->onDelete('cascade');
+
+            $table->foreign('year_id')
+                ->references('id')->on('years')
+                ->onDelete('cascade');
         });
     }
 

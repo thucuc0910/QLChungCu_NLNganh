@@ -1,27 +1,15 @@
 @extends('admin.main')
-
 @section('content')
-
-
-
 <div class="card-header bg-white  d-flex justify-content-end">
     <button type="button" name="" class="btn btn-primary">
-        <a href="/admin/electric_water/water/add_month">
+        <a href="/admin/receipt/add_month">
             <i class="fa-solid fa-calendar-plus"></i>
-            <!-- <i class="fa-regular fa-plus"></i> -->
-            <!-- <span>Tháng tiếp theo</span> -->
         </a>
     </button>
 </div>
 
 
 <div class="card-body  mb-10" id="list-electricity">
-
-
-    <!-- <div class="card-header bg-primary text-white">
-        <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
-    </div> -->
-
     <table class="table">
         <thead>
             <tr>
@@ -32,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($watermonths as $key => $month)
+            @foreach ($receipt_months as $key => $month)
             <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>
@@ -51,8 +39,8 @@
                 </td>
 
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/admin/electric_water/water/list/{{ $month->month_id }}">
-                        <i class="fa fa-edit"></i>
+                    <a class="btn btn-primary btn-sm" href="/admin/receipt/list_receipt/{{ $month->month_id }}">
+                        <i class="fa-solid fa-eye"></i>
                     </a>
                 </td>
             </tr>

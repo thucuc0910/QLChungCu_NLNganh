@@ -17,7 +17,9 @@ class AdminController extends Controller
 
     public function home()
     {
-        return view('admin.home',
+        return view('admin.home', [
+            'title' => "CHUNG CƯ SUNHOUSE"
+        ]
 );
     }
 
@@ -38,7 +40,7 @@ class AdminController extends Controller
 
         $check = $request->only('email','password');
         if(Auth::guard('admin')->attempt($check)){
-            return redirect('/admin/home')->with('success', 'Đăng nhập thành công.');
+            return redirect('/admin/apartment/list')->with('success', 'Đăng nhập thành công.');
         }else{
             return redirect()->back()->with('error', 'Lỗi đăng nhập');
         }

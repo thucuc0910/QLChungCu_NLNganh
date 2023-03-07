@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ApartmentService extends Model
+class Month_receipt extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'apartment_id',
-        'service_id',
+        'month_id',
+        'year_id',
     ];
 }

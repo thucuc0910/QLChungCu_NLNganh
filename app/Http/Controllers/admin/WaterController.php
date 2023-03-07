@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Services\admin\ResidentService;
-use App\Http\Services\admin\ApartmentService;
+use App\Http\Services\admin\Apartment_Service;
 use App\Http\Services\admin\WaterService;
 use App\Http\Requests\admin\WaterRequest;
 use App\Models\Water;
@@ -23,7 +23,7 @@ class WaterController extends Controller
 
     protected $waterService;
 
-    public function __construct(ResidentService $residentService, ApartmentService $apartmentService, WaterService $waterService)
+    public function __construct(ResidentService $residentService, Apartment_Service $apartmentService, WaterService $waterService)
     {
         $this->residentService = $residentService;
         $this->apartmentService = $apartmentService;

@@ -21,6 +21,7 @@ use App\Models\Service;
 use App\Models\Repair;
 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 
 use Carbon\Carbon;
@@ -135,9 +136,6 @@ class MainController extends Controller
         return redirect()->back();
     }
 
-
-
-
     public function electricity_water(User $user)
     {
         return view('user.electricity_water', [
@@ -146,4 +144,41 @@ class MainController extends Controller
 
         ]);
     }
+
+    public function changePassword()
+    {
+        return view('user.change_password', [
+            'title' => "THAY ĐỔI MẬT KHẨU",
+            'residents' => $this->mainService->getResident(),
+
+        ]);
+    }
+
+    public function updatePassword(Request $request)
+{
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ],[
+            'old_password' => 'Vui lòng nhập mật khẩu cũ.',
+            'new_password.required' => 'Vui lòng nhập mật khẩu mới',
+            'new_password.confirmed' => 'Xác nhận mật khẩu mới không khớp.',
+
+        ]);
+
+
+        #Match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Mật khẩu cũ không chính xác!");
+        }
+
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Thay đổi mật khẩu thành công!");
+}
 }

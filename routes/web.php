@@ -18,7 +18,7 @@ use App\Http\Controllers\admin\ElectricityController;
 use App\Http\Controllers\admin\WaterController;
 use App\Http\Controllers\admin\Staff_RepairController;
 use App\Http\Controllers\admin\FeedbackController;
-
+use App\Http\Controllers\admin\ReceiptController;
 
 
 use Illuminate\Support\Facades\Auth;
@@ -64,6 +64,9 @@ Route::prefix('user')->group(function () {
         Route::get('/repair/{user}',  [MainController::class, 'repair'])->name('repair');
         Route::post('/repair/{user}',  [MainController::class, 'add_repair'])->name('add_repair');
 
+        Route::get('/changePassword',  [MainController::class, 'changePassword'])->name('changePassword');
+        Route::post('/changePassword',  [MainController::class, 'updatePassword'])->name('updatePassword');
+
     });
 });
 
@@ -105,6 +108,11 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{apartment}', [ApartmentController::class, 'edit']);
             Route::post('/edit/{apartment}', [ApartmentController::class, 'update']);
             Route::delete('/destroy', [ApartmentController::class, 'destroy']);
+
+            Route::get('/service/{apartment}', [ApartmentController::class, 'service']);
+            Route::delete('/service/delete', [ApartmentController::class, 'delete']);
+
+
         });
 
         // Nhân viên
@@ -139,6 +147,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/edit/{resident}', [ResidentController::class, 'edit']);
             Route::post('/edit/{resident}', [ResidentController::class, 'update']);
             Route::delete('/destroy', [ResidentController::class, 'destroy']);
+
         });
 
         // Sửa chữa 
@@ -167,6 +176,13 @@ Route::prefix('admin')->group(function () {
             Route::get('/water/list/{month}', [WaterController::class, 'list_water']);
             Route::post('/water/list/{month}/', [WaterController::class, 'update']);
             Route::get('/water/add_month', [WaterController::class, 'add']);
+        });
+
+        // Tiền thuê
+        Route::prefix('receipt')->group(function () {
+            Route::get('/index', [ReceiptController::class, 'index']);
+            Route::get('/add_month', [ReceiptController::class, 'add']);
+            Route::get('/list_receipt/{month}', [ReceiptController::class, 'list_receipt']);
         });
     });
 });

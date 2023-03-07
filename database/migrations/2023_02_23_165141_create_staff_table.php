@@ -21,13 +21,25 @@ return new class extends Migration
             $table->integer('gender');
             $table->date('birthday');
             $table->bigInteger('position_id')->unsigned();
-            $table->Integer('city')->signed();
+            $table->integer('city');
             $table->integer('district');
             $table->integer('ward');
 
 
             $table->foreign('position_id')
                 ->references('id')->on('positions')
+                ->onDelete('cascade');
+
+            $table->foreign('city')
+                ->references('matp')->on('cities')
+                ->onDelete('cascade');
+
+            $table->foreign('district')
+                ->references('maqh')->on('districts')
+                ->onDelete('cascade');
+
+            $table->foreign('ward')
+                ->references('xaid')->on('wards')
                 ->onDelete('cascade');
         });
     }

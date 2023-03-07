@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('apartment_services', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('apartment_id')->unsigned();
             $table->bigInteger('service_id')->unsigned();
-            $table->date('date_start');
-            $table->date('date_end');
+            
 
             $table->foreign('apartment_id')
             ->references('id')->on('apartments')

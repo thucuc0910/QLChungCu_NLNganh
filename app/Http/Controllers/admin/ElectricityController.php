@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Services\admin\ResidentService;
-use App\Http\Services\admin\ApartmentService;
+use App\Http\Services\admin\Apartment_Service;
 use App\Http\Services\admin\ElectricityService;
 use App\Http\Requests\admin\ElectricityRequest;
 use App\Models\Electricity;
@@ -24,7 +24,7 @@ class ElectricityController extends Controller
 
     protected $electricityService;
 
-    public function __construct(ResidentService $residentService, ApartmentService $apartmentService, ElectricityService $electricityService)
+    public function __construct(ResidentService $residentService, Apartment_Service $apartmentService, ElectricityService $electricityService)
     {
         $this->residentService = $residentService;
         $this->apartmentService = $apartmentService;
@@ -34,7 +34,7 @@ class ElectricityController extends Controller
     public function month_electric()
     {
         return view('admin.electric_water.electric', [
-            'title' => 'Quản LÝ ĐIỆN',
+            'title' => 'QUẢN LÝ ĐIỆN',
             'electricitymonths' => $this->electricityService->getElectricityMonth(),
             'ms' => $this->electricityService->getMonth(),
             'years' => $this->electricityService->getYear(),

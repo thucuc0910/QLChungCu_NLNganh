@@ -13,7 +13,7 @@ use App\Models\Department;
 class ResidentService{
 
     public function get(){
-        return Resident::orderBy('id')->paginate(15);
+        return Resident::orderBy('id')->paginate(25);
     }
 
     public function getUser(){

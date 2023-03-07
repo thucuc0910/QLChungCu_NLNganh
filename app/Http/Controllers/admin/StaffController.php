@@ -85,12 +85,18 @@ class StaffController extends Controller
         return redirect()->back();
     }
 
-    public function list()
+    public function list(Request $request)
     {
+        $staffs = Staff::paginate(10);
+
+        if ($request->search) {
+            $staffs = Staff::where('name', 'like', '%'.$request->search.'%')->paginate(10);
+            $staffs->appends(['search' => $request->search]);
+        }
 
         return view('admin.staff.list', [
             'title' => "DANH SÁCH NHÂN VIÊN",
-            'staffs' => $this->StaffService->get(),
+            'staffs' => $staffs,
             'positions' => $this->StaffService->getPosition(),
         ]);
     }

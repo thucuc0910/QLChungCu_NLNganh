@@ -22,18 +22,21 @@
                     <th style="width: 50px">STT</th>
                     <th>Căn hộ</th>
                     <th>Tháng</th>
-                    <th>Chỉ số cũ</th>
-                    <th>Chỉ số mới</th>
-                    <th>Tổng(kwh)</th>
+                    <th>Năm</th>
+                    <th>Tiền căn hộ</th>
+                    <th>Tiền điện</th>
+                    <th>Tiền nước</th>
+                    <th>Tiền dịch vụ</th>
+                    <th>Tổng</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($waters as $key => $water)
+                @foreach ($receipts as $key => $receipt)
                 <tr>
                     <td>{{$key+1}}</td>
                     <td>
                         @foreach ($apartments as $key => $apartment)
-                        @if($water->apartment_id == $apartment->id)
+                        @if($receipt->apartment_id == $apartment->id)
                         <span>{{$apartment->code}}</span>
                         @endif
                         @endforeach
@@ -41,45 +44,49 @@
                     </td>
                     <td>
                         @foreach ($months as $key => $month)
-                        @if($water->month_water_id == $month->id)
+                        @if($receipt->month_receipt_id == $month->id)
                         <span>{{$month->name}}</span>
                         @endif
                         @endforeach
 
                     </td>
+
                     <td>
-                        <span name="old" type="text" value="{{$water->old}}">{{$water->old}}</span>
+                        @foreach ($years as $key => $year)
+                        @if($receipt->month_receipt_id == $year->id)
+                        <span>{{$year->name}}</span>
+                        @endif
+                        @endforeach
 
                     </td>
+
                     <td>
-                        <input class="new" name="new[{{$water->id}}]" id="new" type="text" value="{{$water->new}}" />
+                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->rent}}</span>
                     </td>
+
                     <td>
-                        <span name="" type="text" value="">
-                            @if($water->new == 0)
-                            {{$water->new}}
-                            @elseif($water->new !=0 )
-                            {{$water->new - $water->old}}
-                            @endif
-                        </span>
+                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->electricity_bill}}</span>
                     </td>
-                    <!-- <span onclick="SaveElectricity({{$water->id}} )">Lưu</span> -->
+
+                    <td>
+                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->water_bill}}</span>
+                    </td>
+
+                    <td>
+                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->service_fee}}</span>
+                    </td>
+
+                    <td>
+                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->total}}</span>
+                    </td>
+                    
+                    
+                    <!-- <span onclick="SaveElectricity({{$receipt->id}} )">Lưu</span> -->
 
                 </tr>
                 @csrf
                 @endforeach
             </tbody>
-
-            <tfoot class="table-secondary">
-                <td colspan="5">
-
-                    <h5 class="bold">TỔNG</h5>
-                </td>
-                <td colspan="2">
-                    <h5>{{$total}}</h5>
-                </td>
-            </tfoot>
-
         </table>
     </div>
 

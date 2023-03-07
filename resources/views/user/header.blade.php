@@ -48,7 +48,9 @@
                                 @endif
                                 @endforeach
 
+                                <a class="dropdown-item" href="/user/changePassword">Thay đổi mật khẩu</a>
                                 <a class="dropdown-item" href="/user/logout">Đăng xuất</a>
+
                                 @else
                                 <a class="dropdown-item" href="/user/login" style="font-weight: bold;">Đăng nhập</a>
                                 @endif
@@ -121,7 +123,7 @@
 
                 @else
                 <li class="active-menu">
-                    <a href="/userlogin" style="font-weight: bold;color:white">ĐĂNG NHẬP</a>
+                    <a href="/user/login" style="font-weight: bold;color:white">ĐĂNG NHẬP</a>
                 </li>
                 @endif
 

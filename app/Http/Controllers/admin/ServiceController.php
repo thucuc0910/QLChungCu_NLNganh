@@ -35,11 +35,18 @@ class ServiceController extends Controller
         return redirect()->back();
     }
 
-    public function list()
+    public function list(Request $request)
     {
+        $services = Service::paginate(25);
+
+        if ($request->search) {
+            $services = Service::where('code', 'like', '%'.$request->search.'%')->paginate(25);
+            $services->appends(['search' => $request->search]);
+        }
+
         return view('admin.service.list',[
             'title' => "DANH SÁCH DỊCH VỤ",
-            'services' => $this->serviceService->get(),
+            'services' => $services,
         ]);
     }
 

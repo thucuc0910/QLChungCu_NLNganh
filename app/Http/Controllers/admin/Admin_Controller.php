@@ -24,9 +24,10 @@ class Admin_Controller extends Controller
     public function add()
     {
         return view('admin.user.add_staff', [
-            'title' => 'THÊM TÀI KHOẢN CHO NỘI BỘ',
-            'staffs' => $this->adminService->getStaff()
-        ]);
+            'title' => 'THÊM TÀI KHOẢN CHO NHÂN VIÊN',
+            'staffs' => $this->adminService->getStaff(),
+            'admins' => $this->adminService->get(),
+        ]); 
     }
     public function create(AdminRequest $request)
     {
@@ -35,11 +36,18 @@ class Admin_Controller extends Controller
 
         return redirect()->back();
     }
-    public function list()
+    public function list(Request $request)
     {
+        $admins = Admin::paginate(25);
+
+        if ($request->search) {
+            $admins = Admin::where('name', 'like', '%'.$request->search.'%')->paginate(25);
+            $admins->appends(['search' => $request->search]);
+        }
+
         return view('admin.user.list_staff',[
-            'title' => "DANH SÁCH TÀI KHOẢN NỘI BỘ",
-            'admins' => $this->adminService->get(),
+            'title' => "DANH SÁCH TÀI KHOẢN NHÂN VIÊN",
+            'admins' => $admins,
         ]);
     }
 

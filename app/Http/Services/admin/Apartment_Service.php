@@ -3,16 +3,28 @@
 namespace App\Http\Services\admin;
 
 use App\Models\Apartment;
+use App\Models\ApartmentService;
+use App\Models\Service;
+
+
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Hash;
 
-class ApartmentService
+class Apartment_Service
 {
 
     public function get(){
         return Apartment::orderBy('id')->paginate(15);
+    }
+
+    public function getService(){
+        return Service::orderBy('id')->paginate(15);
+    }
+
+    public function getApartmentService($id){
+        return ApartmentService::where('apartment_id', '=',$id)->paginate(5);
     }
 
     public function create($request)
@@ -67,10 +79,22 @@ class ApartmentService
         return false;
     }
 
+    
+
     public function getApartment()
     {
         return Apartment::where('status' , '>=', 0)->get();
     }
 
+    public function deleteApartmentService($request)
+    {
+        $apartment = ApartmentService::where('id', $request->input('id'))->first();
+        if ($apartment) {
+            $apartment->delete();
+            return true;
+        }
+
+        return false;
+    }
     
 }

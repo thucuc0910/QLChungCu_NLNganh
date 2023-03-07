@@ -2,19 +2,21 @@
 
 @section('content')
 <form method="Post">
-
     <div class="card-header  d-flex justify-content-end">
-        <button type="submit"  class="btn btn-secondary ">
+        <button type="submit" class="btn btn-primary ">
             <i class="fa-solid fa-floppy-disk" placeholder="Lưu"></i>
         </button>
+        <!-- <button type="button" class="btn btn-primary ml-1">
+            <i class="fa-solid fa-file-arrow-down"></i>
+        </button> -->
     </div>
 
 
 
     <div class="card-body  mb-10" id="list-electricity">
-        <div class="card-header bg-primary text-white">
+        <!-- <div class="card-header bg-primary text-white">
             <h3 class="card-title  mt-2 mb-2 align-center">{{ $title }}</h3>
-        </div>
+        </div> -->
 
         <table class="table table-hover">
             <thead>
@@ -33,7 +35,7 @@
                     </th> -->
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="overflow-x:auto; height: 300px;">
                 @foreach ($electricities as $key => $electric)
                 <tr>
                     <td>{{$key+1}}</td>

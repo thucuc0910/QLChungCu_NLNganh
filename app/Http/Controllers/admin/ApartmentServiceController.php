@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Services\admin\ApartmentService;
+use App\Http\Services\admin\Apartment_Service;
 use App\Http\Services\admin\ServiceService;
 use App\Http\Services\admin\ApartmentServiceService;
 use App\Http\Requests\admin\ApartmentServiceRequest;
@@ -12,14 +12,14 @@ use Illuminate\Http\Request;
 class ApartmentServiceController extends Controller
 {
     protected $apartmentService;
-    protected $apartmentserviceService;
+    protected $apartment_serviceService;
 
     protected $serviceService;
 
-    public function __construct(ApartmentService $apartmentService,ApartmentServiceService $apartmentserviceService, ServiceService $serviceService)
+    public function __construct(Apartment_Service $apartmentService,ApartmentServiceService $apartment_serviceService, ServiceService $serviceService)
     {
         $this->apartmentService = $apartmentService;
-        $this->apartmentserviceService = $apartmentserviceService;
+        $this->apartment_serviceService = $apartment_serviceService;
         $this->serviceService = $serviceService;
     }
     public function add_service(){
@@ -30,9 +30,8 @@ class ApartmentServiceController extends Controller
         ]);
     }
 
-    public function add_service_update(ApartmentServiceRequest $request){
-        //dd($request->input());
-        $this->apartmentserviceService->createDepartmentService($request);
+    public function add_service_update( Request $request){
+        $this->apartment_serviceService->createDepartmentService($request);
 
         return redirect()->back();
     }
