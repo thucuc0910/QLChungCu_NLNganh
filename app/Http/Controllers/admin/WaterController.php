@@ -87,6 +87,7 @@ class WaterController extends Controller
             'total' => $total,
             'apartments' => $this->waterService->getApartment(),
             'months' => $this->waterService->getMonth(),
+            'years' => $this->waterService->getYear(),
         ]);
     }
 

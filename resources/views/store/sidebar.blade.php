@@ -21,6 +21,16 @@
                     </a>
                 </li>
 
+
+                <li class="nav-item">
+                    <a href="/admin/position/list" class="nav-link">
+                        <i class="nav-icon fa-solid fa-user-gear"></i>
+                        <p>
+                            Chức vụ
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="/admin/staff/list" class="nav-link">
                         <i class="nav-icon fa-solid fa-user-tie"></i>

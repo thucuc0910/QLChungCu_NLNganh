@@ -3,11 +3,11 @@
 @section('content')
 <form method="Post">
 
-    <div class="card-header  d-flex justify-content-end">
+    <!-- <div class="card-header  d-flex justify-content-end">
         <button type="submit" name="add_staff" class="btn btn-primary add_staff ">
             <i class="fa-solid fa-floppy-disk" placeholder="Lưu"></i>
         </button>
-    </div>
+    </div> -->
 
 
 
@@ -28,6 +28,8 @@
                     <th>Tiền nước</th>
                     <th>Tiền dịch vụ</th>
                     <th>Tổng</th>
+                    <th>Tình trạng</th>
+                    <th>Tuỳ biến</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,30 +63,43 @@
                     </td>
 
                     <td>
-                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->rent}}</span>
+                        <span>{{number_format($receipt->rent)}}VNĐ</span>
                     </td>
 
                     <td>
-                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->electricity_bill}}</span>
+                        <span>{{number_format($receipt->electricity_bill)}}VNĐ</span>
                     </td>
 
                     <td>
-                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->water_bill}}</span>
+                        <span>{{number_format($receipt->water_bill)}}VNĐ</span>
                     </td>
 
                     <td>
-                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->service_fee}}</span>
+                        <span>{{number_format($receipt->service_fee)}}VNĐ</span>
                     </td>
 
                     <td>
-                        <span name="old" type="text" value="{{$receipt->old}}">{{$receipt->total}}</span>
+                        <span>{{number_format($receipt->total)}}VNĐ</span>
                     </td>
-                    
-                    
-                    <!-- <span onclick="SaveElectricity({{$receipt->id}} )">Lưu</span> -->
 
+                    <td>
+                        @if($receipt->status==0)
+                        <span style="color:red">
+                            Chưa đóng
+                        </span>
+                        @elseif($receipt->status==1)
+                        <span style="color:green">
+                            Đã đóng
+                        </span>
+                        @endif
+                    </td>
+
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/admin/receipt/status/{{ $receipt->id }}">
+                            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </td>
                 </tr>
-                @csrf
                 @endforeach
             </tbody>
         </table>

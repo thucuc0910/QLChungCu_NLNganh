@@ -17,6 +17,7 @@ use App\Models\Resident;
 use App\Models\Apartment;
 use App\Models\ApartmentService;
 use App\Models\Feedback;
+use App\Models\Receipt;
 use App\Models\Service;
 use App\Models\Repair;
 
@@ -138,10 +139,18 @@ class MainController extends Controller
 
     public function electricity_water(User $user)
     {
+        $id = $user->resident_id;
+        $resident = Resident::where('id','=',$id)->first();
+        $apartment_id = $resident->apartment_id;
+        // dd($apartment_id);
+        $receipts = Receipt::where('apartment_id','=',$apartment_id)->get();
+
         return view('user.electricity_water', [
             'title' => "CHUNG CƯ SUNHOUSE",
+            'receipts' => $receipts,
+            'months' => $this->mainService->getMonth(),
+            'years' => $this->mainService->getYear(),
             'residents' => $this->mainService->getResident(),
-
         ]);
     }
 

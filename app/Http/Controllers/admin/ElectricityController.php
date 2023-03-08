@@ -88,6 +88,7 @@ class ElectricityController extends Controller
             'total' => $total,
             'apartments' => $this->electricityService->getApartment(),
             'months' => $this->electricityService->getMonth(),
+            'years' => $this->electricityService->getYear(),
         ]);
     }
 

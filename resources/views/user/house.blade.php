@@ -79,7 +79,8 @@
                             </td>
                             <td colspan="2" class=" text-center" style="vertical-align: bottom;">
                                 <a href="/user/electricity_water/{{auth('web')->user()->id}}">
-                                    <i class="fa-solid fa-bolt" style="font-size: 50px; color: RGB(15,74,146);"></i>
+                                    <i class="fa-solid fa-file-invoice-dollar" style="font-size: 50px; color: RGB(15,74,146);"></i>
+                                    <!-- <i class="fa-solid fa-bolt" style="font-size: 50px; color: RGB(15,74,146);"></i> -->
                                 </a>
                             </td>
                         </tr>
@@ -88,7 +89,7 @@
                                 THÔNG TIN CĂN HỘ
                             </td>
                             <td colspan="2" class=" text-center" style="color: black; font-size: 16px; font-weight:bold">
-                                ĐIỆN NƯỚC
+                                TIỀN THUÊ
                             </td>
                         </tr>
 

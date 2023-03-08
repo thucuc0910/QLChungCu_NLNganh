@@ -24,7 +24,6 @@ class ReceiptService{
     public function getReceipt($id)
     {
         $a = $id;
-        
         return    Receipt::where('month_receipt_id','=',$a)->get();
             
     }
@@ -88,7 +87,6 @@ class ReceiptService{
 
         $data = ApartmentService::where('apartment_id','=',$id)->get();
 
-        // $a = $data->service_id;
 
         $service_fee = 0;
 

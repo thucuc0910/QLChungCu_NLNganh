@@ -22,6 +22,7 @@
                     <th style="width: 50px">STT</th>
                     <th>Căn hộ</th>
                     <th>Tháng</th>
+                    <th>Năm</th>
                     <th>Chỉ số cũ</th>
                     <th>Chỉ số mới</th>
                     <th>Tổng(kwh)</th>
@@ -43,6 +44,14 @@
                         @foreach ($months as $key => $month)
                         @if($water->month_water_id == $month->id)
                         <span>{{$month->name}}</span>
+                        @endif
+                        @endforeach
+
+                    </td>
+                    <td>
+                        @foreach ($years as $key => $year)
+                        @if($water->month_water_id == $year->id)
+                        <span>{{$year->name}}</span>
                         @endif
                         @endforeach
 

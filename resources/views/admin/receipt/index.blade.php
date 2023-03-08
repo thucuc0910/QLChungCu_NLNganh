@@ -20,26 +20,26 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($receipt_months as $key => $month)
+            @foreach ($receipt_months as $key => $receipt)
             <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>
                     @foreach ($ms as $a => $m)
-                    @if ($month->month_id == $m->id)
+                    @if ($receipt->month_id == $m->id)
                     {{$m->name}}
                     @endif
                     @endforeach
                 </td>
                 <td>
                     @foreach ($years as $b => $year)
-                    @if ($month->year_id == $year->id)
+                    @if ($receipt->year_id == $year->id)
                     {{$year->name}}
                     @endif
                     @endforeach
                 </td>
 
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/admin/receipt/list_receipt/{{ $month->month_id }}">
+                    <a class="btn btn-primary btn-sm" href="/admin/receipt/list_receipt/{{ $receipt->id }}">
                         <i class="fa-solid fa-eye"></i>
                     </a>
                 </td>

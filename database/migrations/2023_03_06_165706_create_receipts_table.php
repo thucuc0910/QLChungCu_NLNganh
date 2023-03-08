@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('service_fee');
             $table->integer('rent');
             $table->integer('total');
+            $table->integer('status');
 
             $table->foreign('month_receipt_id')
                 ->references('id')->on('month_receipts')
