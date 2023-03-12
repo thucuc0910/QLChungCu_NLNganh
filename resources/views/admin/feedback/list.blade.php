@@ -20,7 +20,7 @@
                 <td>{{ $key + 1}}</td>
                 <td>{{ $feedback->name }}</td>
                 <td>{{ $feedback->content }}</td>
-                <td>{{ $feedback->date }}</td>
+                <td>{{ date("d-m-Y", strtotime($feedback->date)) }}</td>
 
             </tr>
             @endforeach

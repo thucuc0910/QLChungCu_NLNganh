@@ -49,20 +49,27 @@
 
                     </td>
                     <td>
+                        @foreach($month_electricities as $month_electricity)
+                        @if($electric->month_electric_id == $month_electricity->id)
                         @foreach ($months as $key => $month)
-                        @if($electric->month_electric_id == $month->id)
+                        @if($month_electricity->month_id == $month->id)
                         <span>{{$month->name}}</span>
+                        @endif
+                        @endforeach
                         @endif
                         @endforeach
 
                     </td>
                     <td>
+                        @foreach($month_electricities as $month_electricity)
+                        @if($electric->month_electric_id == $month_electricity->id)
                         @foreach ($years as $key => $year)
-                        @if($electric->month_electric_id == $year->id)
+                        @if($month_electricity->year_id == $year->id)
                         <span>{{$year->name}}</span>
                         @endif
                         @endforeach
-
+                        @endif
+                        @endforeach
                     </td>
                     <td>
                         <span name="old" type="text" value="{{$electric->old}}">{{$electric->old}}</span>

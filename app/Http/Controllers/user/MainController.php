@@ -17,6 +17,7 @@ use App\Models\Resident;
 use App\Models\Apartment;
 use App\Models\ApartmentService;
 use App\Models\Feedback;
+use App\Models\Month_receipt;
 use App\Models\Receipt;
 use App\Models\Service;
 use App\Models\Repair;
@@ -103,7 +104,7 @@ class MainController extends Controller
         return redirect()->back();
     }
 
-    public function feedback(User $user)
+    public function feedback()
     {
         return view('user.feedback', [
             'title' => "CHUNG CƯ SUNHOUSE",
@@ -140,14 +141,16 @@ class MainController extends Controller
     public function electricity_water(User $user)
     {
         $id = $user->resident_id;
-        $resident = Resident::where('id','=',$id)->first();
+        $resident = Resident::where('id', '=', $id)->first();
         $apartment_id = $resident->apartment_id;
         // dd($apartment_id);
-        $receipts = Receipt::where('apartment_id','=',$apartment_id)->get();
+        $receipts = Receipt::where('apartment_id', '=', $apartment_id)->get();
+        $month_receipts = Month_receipt::all();
 
         return view('user.electricity_water', [
             'title' => "CHUNG CƯ SUNHOUSE",
             'receipts' => $receipts,
+            'month_receipts' => $month_receipts,
             'months' => $this->mainService->getMonth(),
             'years' => $this->mainService->getYear(),
             'residents' => $this->mainService->getResident(),
@@ -164,12 +167,12 @@ class MainController extends Controller
     }
 
     public function updatePassword(Request $request)
-{
+    {
         # Validation
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed',
-        ],[
+        ], [
             'old_password' => 'Vui lòng nhập mật khẩu cũ.',
             'new_password.required' => 'Vui lòng nhập mật khẩu mới',
             'new_password.confirmed' => 'Xác nhận mật khẩu mới không khớp.',
@@ -178,7 +181,7 @@ class MainController extends Controller
 
 
         #Match The Old Password
-        if(!Hash::check($request->old_password, auth()->user()->password)){
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
             return back()->with("error", "Mật khẩu cũ không chính xác!");
         }
 
@@ -189,5 +192,21 @@ class MainController extends Controller
         ]);
 
         return back()->with("status", "Thay đổi mật khẩu thành công!");
-}
+    }
+
+    public function detail($id)
+    {
+        $receipt = Receipt::where('id','=',$id)->first();
+        $apartment_id = $receipt->apartment_id;
+        $apartment_services = ApartmentService::where('apartment_id','=',$apartment_id)->get();
+        $services = Service::all();
+        return view('user.detail_receipt', [
+            'title' => "CHI TIẾT TIỀN THUÊ",
+            'residents' => $this->mainService->getResident(),
+            'receipt' => $receipt,
+            'apartment_services' => $apartment_services,
+            'services' => $services,
+
+        ]);
+    }
 }

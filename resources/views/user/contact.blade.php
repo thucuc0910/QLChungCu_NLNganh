@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="item-slick1" style = "background-image:url(/template/admin/img/slider/slider3.jpg">
+            <div class="item-slick1" style="background-image:url(/template/admin/img/slider/slider3.jpg">
                 <div class="container h-full">
                     <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
                         <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
@@ -53,9 +53,7 @@
                             <span class="txt_content_child">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span class="add">
-
-                                    Toà nhà Ladeco, 266 Đội Cấn, phường Liễu Giai, Quận Ba Đình, Hà Nội
-
+                                    Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ, Việt Nam
                                 </span>
                             </span>
                         </li>
@@ -119,7 +117,8 @@
                         <div class="iFrameMap">
                             <div class="google-map" style="width:5000px">
                                 <div id="contact_map" class="map" style="height:500px">
-                                    <iframe style="height:500px; width:720px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.91200565666!2d105.81368971529523!3d21.03620659289907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab128d511a8d%3A0x3440d4c5d63f693!2zMjY2IMSQ4buZaSBD4bqlbiwgTGnhu4V1IEdpYWksIEJhIMSQw6xuaCwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1553499875578" allowfullscreen=""></iframe>
+                                    <iframe style="height:500px; width:720px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15715.73357121595!2d105.77034015000001!3d10.0223554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0895a51d60719%3A0x9d76b0035f6d53d0!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBD4bqnbiBUaMah!5e0!3m2!1svi!2s!4v1678468633409!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <!-- <iframe style="height:500px; width:720px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.91200565666!2d105.81368971529523!3d21.03620659289907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab128d511a8d%3A0x3440d4c5d63f693!2zMjY2IMSQ4buZaSBD4bqlbiwgTGnhu4V1IEdpYWksIEJhIMSQw6xuaCwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1553499875578" allowfullscreen=""></iframe> -->
                                 </div>
                             </div>
                         </div>

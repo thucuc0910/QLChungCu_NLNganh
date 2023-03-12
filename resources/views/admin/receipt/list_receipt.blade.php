@@ -45,21 +45,27 @@
 
                     </td>
                     <td>
+                        @foreach($month_receipts as $month_receipt)
+                        @if($receipt->month_receipt_id == $month_receipt->id)
                         @foreach ($months as $key => $month)
-                        @if($receipt->month_receipt_id == $month->id)
+                        @if($month_receipt->month_id == $month->id)
                         <span>{{$month->name}}</span>
+                        @endif
+                        @endforeach
                         @endif
                         @endforeach
 
                     </td>
-
                     <td>
+                        @foreach($month_receipts as $month_receipt)
+                        @if($receipt->month_receipt_id == $month_receipt->id)
                         @foreach ($years as $key => $year)
-                        @if($receipt->month_receipt_id == $year->id)
+                        @if($month_receipt->year_id == $year->id)
                         <span>{{$year->name}}</span>
                         @endif
                         @endforeach
-
+                        @endif
+                        @endforeach
                     </td>
 
                     <td>
@@ -67,11 +73,11 @@
                     </td>
 
                     <td>
-                        <span>{{number_format($receipt->electricity_bill)}}VNĐ</span>
+                        <span>{{number_format($receipt->electricity_bill * 2000 )}}VNĐ</span>
                     </td>
 
                     <td>
-                        <span>{{number_format($receipt->water_bill)}}VNĐ</span>
+                        <span>{{number_format($receipt->water_bill * 8000)}}VNĐ</span>
                     </td>
 
                     <td>

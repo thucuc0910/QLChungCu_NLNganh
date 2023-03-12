@@ -58,7 +58,7 @@
                 </td>
                 <td>{{ $resident->CMND }}</td>
                 <td>{{ $resident->phone }}</td>
-                <td>{{ $resident->birthday }}</td>
+                <td>{{ date("d-m-Y", strtotime($resident->birthday)) }}</td>
                 <td>
                     @if ($resident->gender == 1)
                     <p>Nam</p>

@@ -21,6 +21,7 @@
                                 <th>Năm</th>
                                 <th>Phải đóng</th>
                                 <th>Tình trạng</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -28,22 +29,29 @@
                             <tr>
                                 <td>{{ $key + 1}}</td>
                                 <td>
+                                    @foreach($month_receipts as $month_receipt)
+                                    @if($receipt->month_receipt_id == $month_receipt->id)
                                     @foreach ($months as $key => $month)
-                                    @if($receipt->month_receipt_id == $month->id)
+                                    @if($month_receipt->month_id == $month->id)
                                     <span>{{$month->name}}</span>
+                                    @endif
+                                    @endforeach
                                     @endif
                                     @endforeach
 
                                 </td>
                                 <td>
+                                    @foreach($month_receipts as $month_receipt)
+                                    @if($receipt->month_receipt_id == $month_receipt->id)
                                     @foreach ($years as $key => $year)
-                                    @if($receipt->month_receipt_id == $year->id)
+                                    @if($month_receipt->year_id == $year->id)
                                     <span>{{$year->name}}</span>
                                     @endif
                                     @endforeach
-
+                                    @endif
+                                    @endforeach
                                 </td>
-                                <td>{{ $receipt->total }}</td>
+                                <td>{{ number_format($receipt->total)  }}VNĐ</td>
                                 <td>
                                     @if($receipt->status==0)
                                     <span style="color:red">
@@ -54,6 +62,9 @@
                                         Đã đóng
                                     </span>
                                     @endif
+                                </td>
+                                <td>
+                                    <a href="/user/detail_receipt/{{$receipt->id}}">chi tiết</a>
                                 </td>
                             </tr>
                             @endforeach

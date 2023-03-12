@@ -41,20 +41,27 @@
 
                     </td>
                     <td>
+                        @foreach($month_waters as $month_water)
+                        @if($water->month_water_id == $month_water->id)
                         @foreach ($months as $key => $month)
-                        @if($water->month_water_id == $month->id)
+                        @if($month_water->month_id == $month->id)
                         <span>{{$month->name}}</span>
+                        @endif
+                        @endforeach
                         @endif
                         @endforeach
 
                     </td>
                     <td>
+                        @foreach($month_waters as $month_water)
+                        @if($water->month_water_id == $month_water->id)
                         @foreach ($years as $key => $year)
-                        @if($water->month_water_id == $year->id)
+                        @if($month_water->year_id == $year->id)
                         <span>{{$year->name}}</span>
                         @endif
                         @endforeach
-
+                        @endif
+                        @endforeach
                     </td>
                     <td>
                         <span name="old" type="text" value="{{$water->old}}">{{$water->old}}</span>

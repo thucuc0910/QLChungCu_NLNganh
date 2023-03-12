@@ -57,7 +57,7 @@
                     <p>Nữ</p>
                     @endif
                 </td>
-                <td>{{ $staff->birthday }}</td>
+                <td>{{ date("d-m-Y", strtotime($staff->birthday)) }}</td>
                 <td>
                     @foreach ($positions as $a => $position)
 

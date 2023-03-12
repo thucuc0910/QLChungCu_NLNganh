@@ -51,7 +51,7 @@
                 </td>
 
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/admin/electric_water/water/list/{{ $month->month_id }}">
+                    <a class="btn btn-primary btn-sm" href="/admin/electric_water/water/list/{{ $month->id }}">
                         <i class="fa fa-edit"></i>
                     </a>
                 </td>

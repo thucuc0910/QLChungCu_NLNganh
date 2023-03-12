@@ -14,6 +14,8 @@
                 <th>Nội dung</th>
                 <th>Tình trạng</th>
                 <th>Ngày yêu cầu</th>
+                <th>Ngày hoàn thành</th>
+                <th>Người thực hiện</th>
                 <th style="width: 100px">Tuỳ biến</th>
             </tr>
         </thead>
@@ -39,7 +41,27 @@
                     <p style="color: green;">Đã hoàn thành</p>
                     @endif
                 </td>
-                <td>{{ $repair->date }}</td>
+                <td>{{ date("d-m-Y", strtotime($repair->date)) }}</td>
+                <td>
+                    @foreach($staff_repairs as $staff_repair)
+                        @if($staff_repair->repair_id == $repair->id)
+                            @if($staff_repair->date != NULL)
+                            {{date("d-m-Y", strtotime($staff_repair->date))}}
+                            @endif
+                        @endif
+                    @endforeach
+                </td>
+                <td>
+                    @foreach($staff_repairs as $staff_repair)
+                        @if($staff_repair->repair_id == $repair->id)
+                            @foreach($staffs as $staff)
+                                @if($staff->id == $staff_repair->staff_id)
+                                    {{$staff->name}}
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+                </td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="/admin/repair/edit/{{ $repair->id }}">
                         <i class="fa fa-edit"></i>

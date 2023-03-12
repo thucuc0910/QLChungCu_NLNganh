@@ -42,6 +42,9 @@
                     <a class="btn btn-primary btn-sm" href="/admin/receipt/list_receipt/{{ $receipt->id }}">
                         <i class="fa-solid fa-eye"></i>
                     </a>
+                    <a class="btn btn-success btn-sm" href="/admin/receipt/print_receipt/{{ $receipt->id }}">
+                        <i class="fa-solid fa-print"></i>
+                    </a>
                 </td>
             </tr>
             @endforeach

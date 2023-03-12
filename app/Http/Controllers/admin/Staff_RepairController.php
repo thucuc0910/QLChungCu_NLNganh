@@ -27,11 +27,13 @@ class Staff_RepairController extends Controller
     public function list()
     {
         $staff_repairs = $this->staff_repairService->getStaffRepair();
+        $staffs =  $this->staff_repairService->getStaff();
 
         return view('admin.repair.list', [
             'title' => "QUẢN LÝ SỬA CHỮA",
             'repairs' => $this->staff_repairService->get(),
             'staff_repairs' => $staff_repairs,
+            'staffs' => $staffs,
             'apartments' => $this->staff_repairService->getApartment(),
         ]);
     }
@@ -95,7 +97,7 @@ class Staff_RepairController extends Controller
                     $repair->save();
                     foreach($repairs as $r){
                         if($id == $r->repair_id){
-                            if($staff_id !=NULL ){
+                            if($staff_id !=NULL && $date == NULL ){
                                 $r->status = 1;
                                 $r->save();
                             }

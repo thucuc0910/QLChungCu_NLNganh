@@ -81,10 +81,13 @@ class WaterController extends Controller
             }
         }
 
+        $month_waters = Month_water::all();
+
         return view('admin.electric_water.list_water', [
             'title' => 'QUẢN LÝ CHỈ SỐ NƯỚC',
             'waters' => $this->waterService->getWater($id),
             'total' => $total,
+            'month_waters' => $month_waters,
             'apartments' => $this->waterService->getApartment(),
             'months' => $this->waterService->getMonth(),
             'years' => $this->waterService->getYear(),

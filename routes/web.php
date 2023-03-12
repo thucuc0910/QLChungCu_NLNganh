@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\SocialAuthController;
 
 use App\Http\Controllers\user\MainController;
 
@@ -53,7 +54,9 @@ Route::prefix('user')->group(function () {
             return view('user.about', [
                 'title' => "CHUNG CƯ SUNHOUSE"
             ]);
-        }); 
+        });
+        Route::get('/auth/google/redirect', [SocialAuthController::class, 'googleRedirect'])->name('googleRedirect');
+        Route::get('/callback/google', [SocialAuthController::class, 'googleCallback'])->name('googleCallback');
     });
 
     Route::middleware(['auth:web'])->group(function () {
@@ -66,10 +69,12 @@ Route::prefix('user')->group(function () {
         Route::get('/repair/{user}',  [MainController::class, 'repair'])->name('repair');
         Route::post('/repair/{user}',  [MainController::class, 'add_repair'])->name('add_repair');
 
+        Route::get('/detail_receipt/{id}',  [MainController::class, 'detail'])->name('detail');
+        Route::post('/detail_receipt/{id}',  [MainController::class, 'detail_receipt'])->name('detail_receipt');
+
 
         Route::get('/changePassword',  [MainController::class, 'changePassword'])->name('changePassword');
         Route::post('/changePassword',  [MainController::class, 'updatePassword'])->name('updatePassword');
-
     });
 });
 
@@ -149,17 +154,17 @@ Route::prefix('admin')->group(function () {
         });
 
         // Sửa chữa 
-        Route::prefix('repair')->group(function (){
+        Route::prefix('repair')->group(function () {
             Route::get('/list', [Staff_RepairController::class, 'list']);
             Route::get('/edit/{repair}', [Staff_RepairController::class, 'edit']);
-            Route::post('/edit/{repair}', [Staff_RepairController::class, 'update']);            
+            Route::post('/edit/{repair}', [Staff_RepairController::class, 'update']);
         });
 
         // Góp ý
-        Route::prefix('feedback')->group(function (){
-            Route::get('/list', [FeedbackController::class, 'list']);           
+        Route::prefix('feedback')->group(function () {
+            Route::get('/list', [FeedbackController::class, 'list']);
         });
-        
+
 
         // Điện nước
         Route::prefix('electric_water')->group(function () {
@@ -182,6 +187,8 @@ Route::prefix('admin')->group(function () {
             Route::get('/add_month', [ReceiptController::class, 'add']);
             Route::get('/list_receipt/{month}', [ReceiptController::class, 'list_receipt']);
             Route::get('/status/{month}', [ReceiptController::class, 'status']);
+            Route::get('/print_receipt/{month}', [ReceiptController::class, 'print_receipt']);
+
             Route::post('/status/{month}', [ReceiptController::class, 'update_status']);
         });
 

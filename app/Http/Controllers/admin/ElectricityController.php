@@ -59,7 +59,7 @@ class ElectricityController extends Controller
         if ($a == 0) {
             foreach ($apartments as $y => $temp) {
                 $data = new Electricity;
-                $data->month_electric_id = $month->id;
+                $data->month_electric_id = $id;
                 $data->apartment_id = $temp->id;
                 $data->old = 0;
                 $data->new = 0;
@@ -82,10 +82,13 @@ class ElectricityController extends Controller
             }
         }
 
+        $month_electricities = Month_electricity::all();
+
         return view('admin.electric_water.list_electric', [
             'title' => 'QUẢN LÝ CHỈ SỐ ĐIỆN',
             'electricities' => $this->electricityService->getElectricity($id),
             'total' => $total,
+            'month_electricities' => $month_electricities,
             'apartments' => $this->electricityService->getApartment(),
             'months' => $this->electricityService->getMonth(),
             'years' => $this->electricityService->getYear(),

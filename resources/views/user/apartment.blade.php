@@ -60,17 +60,15 @@
                             <tr>
                                 <th scope="row">Dịch vụ</th>
                                 <td colspan="5" style="color: RGB(15,74,146); font-size: 16px; font-weight:bold;vertical-align: middle;">
-                                    @foreach($services_apartment as $a => $b)
                                     @foreach($services as $c => $d)
+                                    @foreach($services_apartment as $a => $b)
                                     @if($b->service_id == $d->id)
-                                    @if($b->date_end >= $now )
                                     <ul class="row">
                                         <li class="col-sm-3">{{$d->name}}</li>
-                                        <li class="col-sm-3" >{{number_format($d->price)}}VNĐ</li>
-                                        <li class="col-sm-3" >{{$b->date_start}}</li>
-                                        <li class="col-sm-3" >{{$b->date_end}}</li>
+                                        <li class="col-sm-3">{{number_format($d->price)}}VNĐ</li>
+                                        <li class="col-sm-3">{{$b->date_start}}</li>
+                                        <li class="col-sm-3">{{$b->date_end}}</li>
                                     </ul>
-                                    @endif
                                     @endif
                                     @endforeach
                                     @endforeach

@@ -64,7 +64,7 @@ class ReceiptService{
         $electricity_bill = 0;
 
         foreach($data as $a){
-            $electricity_bill = ($a->new - $a->old) * 2000;
+            $electricity_bill = $a->new - $a->old;
         }
 
         return $electricity_bill;
@@ -77,7 +77,7 @@ class ReceiptService{
         $water_bill = 0;
 
         foreach($data as $a){
-            $water_bill = ($a->new - $a->old) * 8000;
+            $water_bill = $a->new - $a->old;
         }
 
         return $water_bill;
